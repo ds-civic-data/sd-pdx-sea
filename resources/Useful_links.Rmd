@@ -1,0 +1,17 @@
+---
+title: "Useful links"
+date: "3/27/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Portland
+
+http://www.governing.com/gov-data/portland-gentrification-maps-demographic-data.html
+
+## Seattle
+
+## San Francisco
