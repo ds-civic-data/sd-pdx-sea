@@ -6,6 +6,7 @@ Portland
 --------
 
 <http://www.governing.com/gov-data/portland-gentrification-maps-demographic-data.html>
+<https://projects.oregonlive.com/maps/gentrification/>
 
 Seattle
 -------
