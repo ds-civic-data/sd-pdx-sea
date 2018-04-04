@@ -14,10 +14,10 @@ Timeline
 
 04/03/18    Complete Literature Review
 
-04/17/18    Finish Tidying and Transforming Data 
+04/13/18    Finish Tidy Data
 
-04/17/18    Finalize our project plan
+04/14/18    Finalize Plan
 
-05/03/18    Work on stuff
+04/18/18    Finish Transfrom Data
 
 05/10/18    Symposium
