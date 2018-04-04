@@ -1,7 +1,7 @@
 ################## Read In
 library(tidyverse)
 library(readr)
-Puma_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv", stringsAsFactors=FALSE)
+Puma_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv")
 Puma_h <- read.csv("~/Downloads/csv_hor/ss16hor.csv")
 ######### Cleaning
 
@@ -26,5 +26,5 @@ Puma_p <- Puma_p%>%
 Puma_h <- Puma_h%>%
   select(SERIALNO, ST, PUMA, NP, TYPE, CONP, RNTP, HINCP, WORKSTAT)
 
-### Joining
+### Joining (Need to clean more and figure out serial no. before joining)
 #Pums<- left_join(Puma_p, Puma_h, by = c("PUMA", "ST"))
