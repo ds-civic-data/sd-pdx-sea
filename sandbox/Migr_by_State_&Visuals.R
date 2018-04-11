@@ -105,3 +105,18 @@ CA_WA_OR<- Puma_p%>%
 ggplot(CA_WA_OR, aes(x = AGEP, y = WAGP, color = MIGSP))+
   geom_point(alpha = .3)+
   facet_wrap(PUMA~MIGSP)
+
+
+ggplot(CA_WA_OR, aes(x = WAGP, y = MIGSP, color = MIGSP))+
+  geom_point(alpha = .01)
+
+
+CA_WA_OR1<- CA_WA_OR%>%
+  mutate(WAGP = as.integer(WAGP))%>%
+  filter(is.na(MIGSP)==FALSE)%>%
+  filter(is.na(WAGP)==FALSE)%>%
+  mutate(MIGSP = as.character(MIGSP))%>%
+  group_by(MIGSP)%>%
+  summarize(high_inc = sum(ifelse(WAGP>=99999, 1,0)), 
+            count = n(), 
+            high_incpc = high_inc/count)
