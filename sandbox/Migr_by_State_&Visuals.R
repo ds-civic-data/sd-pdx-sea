@@ -13,21 +13,21 @@ library(readr)
 
 # This doc is too large to upload to github, you can download it and 
 # change this import for your own use
-Puma_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv")
+Pums_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv")
 
 # This doc is on github so this live should work 
-Puma_h <- read.csv("~/sd-pdx-sea/Raw Data/ss16hor.csv")
+Pums_h <- read.csv("~/sd-pdx-sea/Raw Data/ss16hor.csv")
 
 
 ### Filtering for portland area
 
 #People
-Puma_p <- Puma_p %>%
+Puma_p <- Pums_p %>%
   filter(ST==41)%>%
   filter(PUMA==1301|PUMA ==1302|PUMA ==1303|PUMA==1305|PUMA ==1314)
 
 #Housing
-Puma_h <- Puma_h %>%
+Puma_h <- Pums_h %>%
   filter(ST==41)%>%
   filter(PUMA==1301|PUMA ==1302|PUMA ==1303|PUMA==1305|PUMA ==1314)
 
@@ -41,26 +41,90 @@ Puma_h <- Puma_h%>%
   select(SERIALNO, ST, PUMA, NP, TYPE, CONP, RNTP, HINCP, WORKSTAT)
 
 
-#############################################################################\
+#############################################################################
+#######Just Portland
 ### Function to count migration from each state (by PUMA code)
 state_migr_count <- function(x){
   state_migr<- Puma_p%>%
-    filter(MIGSP==x)
-  state_migr_n<-count(state_migr)
-  state_migr_pc<-count(state_migr)/count(Puma_p)
+    filter(MIGSP==x)%>%
+    summarise(state_migr_n = n())
+  state_migr_pc<-state_migr$state_migr_n/count(Puma_p)
   state_migr_n_projected_total<-state_migr_pc*639863
-  print(state_migr_n) 
+  print(state_migr$state_migr_n) 
   print(state_migr_pc)
   print(state_migr_n_projected_total)
 }
 
 
 ## Counting Californians
-state_migr_count('006')
+state_migr_count(6)
 
 ## Counting Washintonians
-state_migr_count('053')
+state_migr_count(53)
 
+#############################################################################
+#######Multnomah and Washington county
+Puma_allp_p <- Pums_p %>%
+  filter(ST==41)%>%
+  filter(PUMA==1301|
+           PUMA ==1302|
+           PUMA ==1303|
+           PUMA==1305|
+           PUMA ==1314|
+           PUMA ==1316|
+           PUMA ==1317|
+           PUMA ==1318|
+           PUMA ==1319|
+           PUMA ==1320|
+           PUMA ==1321|
+           PUMA ==1322|
+           PUMA ==1323|
+           PUMA ==1324)
+
+#Housing
+Puma_allp_h <- Pums_h %>%
+  filter(ST==41)%>%
+  filter(PUMA==1301|
+           PUMA ==1302|
+           PUMA ==1303|
+           PUMA==1305|
+           PUMA ==1314|
+           PUMA ==1316|
+           PUMA ==1317|
+           PUMA ==1318|
+           PUMA ==1319|
+           PUMA ==1320|
+           PUMA ==1321|
+           PUMA ==1322|
+           PUMA ==1323|
+           PUMA ==1324)
+
+### Choosing variables
+Puma_allp_p <- Puma_allp_p%>%
+  select(SERIALNO, ST, AGEP, PUMA, CIT, CITWP, 
+         NWAB, NWAV, NWLA, NWLK, WAGP, FOD1P,FOD2P, 
+         MIGSP, OCCP, PINCP, POBP, RAC1P, RAC2P, RAC3P)
+
+Puma_allp_h <- Puma_allp_h%>%
+  select(SERIALNO, ST, PUMA, NP, TYPE, CONP, RNTP, HINCP, WORKSTAT)
+
+state_migr_count_allp <- function(x){
+  state_migr<- Puma_allp_p%>%
+    filter(MIGSP==x)%>%
+    summarise(state_migr_n = n())
+  state_migr_pc<-state_migr$state_migr_n/count(Puma_p)
+  state_migr_n_projected_total<-state_migr_pc*639863
+  print(state_migr$state_migr_n) 
+  print(state_migr_pc)
+  print(state_migr_n_projected_total)
+}
+
+
+## Counting Californians
+state_migr_count_allp(6)
+
+## Counting Washintonians
+state_migr_count_allp(53)
 
 ####################################################################################
 ### Exploratory Visualization function (of wages and age)
