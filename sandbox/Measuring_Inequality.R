@@ -105,6 +105,7 @@ ginico(Puma_allp_p1)
 ginico_nbhd<- function(x,y){
   f <- x%>%
     filter(is.na(WAGP)==FALSE)%>%
+    filter(WAGP!=0)%>%
     filter(PUMA==y)
   print(ineq(f$WAGP, type = "Gini"))
 }
