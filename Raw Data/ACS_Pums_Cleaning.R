@@ -19,7 +19,8 @@ Puma_h <- read.csv("~/sd-pdx-sea/Raw Data/ss16hor.csv")
 
 
 ### Filtering for portland area
-
+# Link to PUMA codes:
+# https://www.census.gov/geo/maps-data/maps/2010puma/st41_or.html
 #People
 Puma_p <- Puma_p %>%
   filter(ST==41)%>%
