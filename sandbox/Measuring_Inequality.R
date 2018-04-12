@@ -180,33 +180,20 @@ ginico_nbhd_h(Puma_allp_h, 1323)
 ginico_nbhd_h(Puma_allp_h, 1323)
 ######################################################################################
 ### Creating comparison data frame
-gini_h<- c(## N&NE
+gini_h<- c(
   ginico_nbhd_h(Puma_allp_h, 1301),
-  ## E
   ginico_nbhd_h(Puma_allp_h, 1302),
-  ## SE
   ginico_nbhd_h(Puma_allp_h, 1303),
-  ## Central East
   ginico_nbhd_h(Puma_allp_h, 1305),
-  ## NW&SW
   ginico_nbhd_h(Puma_allp_h, 1314),
-  ## Rest of Multnomah
   ginico_nbhd_h(Puma_allp_h, 1316),
-  ## SE Clackamas - Demascus City
   ginico_nbhd_h(Puma_allp_h, 1317),
-  ## NW Clackamas - OR City, Milwaukie, Happy Valley
   ginico_nbhd_h(Puma_allp_h, 1318),
-  ## NW Clackamas - Lake Oswego, West Linn, Wilsonville
   ginico_nbhd_h(Puma_allp_h, 1319),
-  ## SE Washington (county)
   ginico_nbhd_h(Puma_allp_h, 1320),
-  ## W Washington (county)
   ginico_nbhd_h(Puma_allp_h, 1321),
-  ## Central Washington - Hillboro City
   ginico_nbhd_h(Puma_allp_h, 1322),
-  ## Central Washington - Beaverton&Aloha
   ginico_nbhd_h(Puma_allp_h, 1323),
-  ## NE Washington - (county)
   ginico_nbhd_h(Puma_allp_h, 1323))
 
 gini_p<- c(## N&NE
@@ -247,7 +234,8 @@ gini_nam<- c("N&NE Portland", "E Portland",
              "SE Washington (county)", "W Washington (county)", 
              "Central Washington - Hillboro City",
              "Central Washington - Beaverton&Aloha", "NE Washington - (county)")
+PUMA <- c(1301, 1302, 1303, 1305, 1314, 1316, 1317, 1318, 1319, 1320, 1321, 1322, 1323, 1324)
 
-gini_stats0<- as.data.frame(gini_nam, gini_p, gini_h)
-
+gini_stats0<- data.frame(gini_nam, gini_p, gini_h,PUMA,
+                            row.names = NULL)
 
