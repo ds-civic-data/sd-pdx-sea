@@ -139,6 +139,115 @@ ginico_nbhd(Puma_allp_p, 1323)
 ## NE Washington - (county)
 ginico_nbhd(Puma_allp_p, 1323)
 
+###################################################################################
+###Testing by comparison with PUMS Household data
+ginico_nbhd_h<- function(x,y){
+  f <- x%>%
+    filter(is.na(HINCP)==FALSE)%>%
+    filter(HINCP!=0)%>%
+    filter(PUMA==y)
+  print(ineq(f$HINCP, type = "Gini"))
+}
 
+
+## N&NE
+ginico_nbhd_h(Puma_allp_h, 1301)
+## E
+ginico_nbhd_h(Puma_allp_h, 1302)
+## SE
+ginico_nbhd_h(Puma_allp_h, 1303)
+## Central East
+ginico_nbhd_h(Puma_allp_h, 1305)
+## NW&SW
+ginico_nbhd_h(Puma_allp_h, 1314)
+## Rest of Multnomah
+ginico_nbhd_h(Puma_allp_h, 1316)
+## SE Clackamas - Demascus City
+ginico_nbhd_h(Puma_allp_h, 1317)
+## NW Clackamas - OR City, Milwaukie, Happy Valley
+ginico_nbhd_h(Puma_allp_h, 1318)
+## NW Clackamas - Lake Oswego, West Linn, Wilsonville
+ginico_nbhd_h(Puma_allp_h, 1319)
+## SE Washington (county)
+ginico_nbhd_h(Puma_allp_h, 1320)
+## W Washington (county)
+ginico_nbhd_h(Puma_allp_h, 1321)
+## Central Washington - Hillboro City
+ginico_nbhd_h(Puma_allp_h, 1322)
+## Central Washington - Beaverton&Aloha
+ginico_nbhd_h(Puma_allp_h, 1323)
+## NE Washington - (county)
+ginico_nbhd_h(Puma_allp_h, 1323)
+######################################################################################
+### Creating comparison data frame
+gini_h<- c(## N&NE
+  ginico_nbhd_h(Puma_allp_h, 1301),
+  ## E
+  ginico_nbhd_h(Puma_allp_h, 1302),
+  ## SE
+  ginico_nbhd_h(Puma_allp_h, 1303),
+  ## Central East
+  ginico_nbhd_h(Puma_allp_h, 1305),
+  ## NW&SW
+  ginico_nbhd_h(Puma_allp_h, 1314),
+  ## Rest of Multnomah
+  ginico_nbhd_h(Puma_allp_h, 1316),
+  ## SE Clackamas - Demascus City
+  ginico_nbhd_h(Puma_allp_h, 1317),
+  ## NW Clackamas - OR City, Milwaukie, Happy Valley
+  ginico_nbhd_h(Puma_allp_h, 1318),
+  ## NW Clackamas - Lake Oswego, West Linn, Wilsonville
+  ginico_nbhd_h(Puma_allp_h, 1319),
+  ## SE Washington (county)
+  ginico_nbhd_h(Puma_allp_h, 1320),
+  ## W Washington (county)
+  ginico_nbhd_h(Puma_allp_h, 1321),
+  ## Central Washington - Hillboro City
+  ginico_nbhd_h(Puma_allp_h, 1322),
+  ## Central Washington - Beaverton&Aloha
+  ginico_nbhd_h(Puma_allp_h, 1323),
+  ## NE Washington - (county)
+  ginico_nbhd_h(Puma_allp_h, 1323))
+
+gini_p<- c(## N&NE
+ginico_nbhd(Puma_allp_p, 1301),
+## E
+ginico_nbhd(Puma_allp_p, 1302),
+## SE
+ginico_nbhd(Puma_allp_p, 1303),
+## Central East
+ginico_nbhd(Puma_allp_p, 1305),
+## NW&SW
+ginico_nbhd(Puma_allp_p, 1314),
+## Rest of Multnomah
+ginico_nbhd(Puma_allp_p, 1316),
+## SE Clackamas - Demascus City
+ginico_nbhd(Puma_allp_p, 1317),
+## NW Clackamas - OR City, Milwaukie, Happy Valley
+ginico_nbhd(Puma_allp_p, 1318),
+## NW Clackamas - Lake Oswego, West Linn, Wilsonville
+ginico_nbhd(Puma_allp_p, 1319),
+## SE Washington (county)
+ginico_nbhd(Puma_allp_p, 1320),
+## W Washington (county)
+ginico_nbhd(Puma_allp_p, 1321),
+## Central Washington - Hillboro City
+ginico_nbhd(Puma_allp_p, 1322),
+## Central Washington - Beaverton&Aloha
+ginico_nbhd(Puma_allp_p, 1323),
+## NE Washington - (county)
+ginico_nbhd(Puma_allp_p, 1323))
+
+gini_nam<- c("N&NE Portland", "E Portland",
+             "SE Portland", "Central East Portland", 
+             "NW&SW Portland", "Rest of Multnomah", 
+             "SE Clackamas - Demascus City",
+             "NW Clackamas - OR City, Milwaukie, Happy Valley",
+             "NW Clackamas - Lake Oswego, West Linn, Wilsonville", 
+             "SE Washington (county)", "W Washington (county)", 
+             "Central Washington - Hillboro City",
+             "Central Washington - Beaverton&Aloha", "NE Washington - (county)")
+
+gini_stats0<- as.data.frame(gini_nam, gini_p, gini_h)
 
 
