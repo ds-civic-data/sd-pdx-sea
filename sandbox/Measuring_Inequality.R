@@ -14,10 +14,10 @@ library(ineq)
 
 # This doc is too large to upload to github, you can download it and 
 # change this import for your own use
-Puma_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv")
+Pums_p <- read.csv("~/Downloads/csv_por-2/ss16por.csv")
 
 # This doc is on github so this live should work 
-Puma_h <- read.csv("~/sd-pdx-sea/Raw Data/ss16hor.csv")
+Pums_h <- read.csv("~/sd-pdx-sea/Raw Data/ss16hor.csv")
 
 
 ### Filtering for portland area
