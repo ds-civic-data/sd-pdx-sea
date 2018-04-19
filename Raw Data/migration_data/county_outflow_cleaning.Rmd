@@ -11,7 +11,7 @@ library(tidyverse)
 
 ```{r}
 outflow_1516 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1516.csv")
-outflow_1415 <-
+outflow_1415 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1415.csv")
 outflow_1314 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1314.csv")
 outflow_1213 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1213.csv")
 outflow_1112 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1112.csv")
@@ -21,7 +21,7 @@ outflow_0809 <- read_csv("C:\\Users\\Godot\\Downloads\\county0809\\countyoutflow
 ```
 ```{r}
 outflow_1516_clean <- cleanr(outflow_1516)
-outflow_1415_clean <- cleanr()
+outflow_1415_clean <- cleanr(outflow_1415)
 outflow_1314_clean <- cleanr(outflow_1314)
 outflow_1213_clean <- cleanr(outflow_1213)
 outflow_1112_clean <- cleanr(outflow_1112)
@@ -30,7 +30,7 @@ outflow_0910_clean <- cleanr(outflow_0910)
 outflow_0809_clean <- cleanr(outflow_0809)
 
 outflow_1516_agg <- aggregatr(outflow_1516_clean)
-outflow_1415_agg <- aggregatr()
+outflow_1415_agg <- aggregatr(outflow_1415_clean)
 outflow_1314_agg <- aggregatr(outflow_1314_clean)
 outflow_1213_agg <- aggregatr(outflow_1213_clean)
 outflow_1112_agg <- aggregatr(outflow_1112_clean)
@@ -39,23 +39,27 @@ outflow_0910_agg <- aggregatr(outflow_0910_clean)
 outflow_0809_agg <- aggregatr(outflow_0809_clean)
 ```
 ```{r}
-outflow <- left_join(outflow_1516_agg, outflow_1314_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow_1516_agg, outflow_1415_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_1314_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 outflow <- left_join(outflow, outflow_1213_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 outflow <- left_join(outflow, outflow_1112_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 outflow <- left_join(outflow, outflow_1011_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 outflow <- left_join(outflow, outflow_0910_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 outflow <- left_join(outflow, outflow_0809_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 
-names(outflow) <- c("origin_area", "dest_area", "1516", "1314", "1213", "1112", "1011", "0910", "0809")
+names(outflow) <- c("origin_area", "dest_area", "1516", "1415", "1314", "1213", "1112", "1011", "0910", "0809")
+outflow <- gather(outflow, key = year, value = n, (`1516`:`0809`))
 ```
 ```{r}
 write.csv(outflow_1516_clean, "bay_puget_outflows_1516.csv")
+write.csv(outflow_1415_clean, "bay_puget_outflows_1516.csv")
 write.csv(outflow_1314_clean, "bay_puget_outflows_1314.csv")
 write.csv(outflow_1213_clean, "bay_puget_outflows_1213.csv")
 write.csv(outflow_1112_clean, "bay_puget_outflows_1112.csv")
 write.csv(outflow_1011_clean, "bay_puget_outflows_1011.csv")
 write.csv(outflow_0910_clean, "bay_puget_outflows_0910.csv")
 write.csv(outflow_0809_clean, "bay_puget_outflows_0809.csv")
+write.csv(outflow, "outflow.csv")
 ```
 ```{r}
 cleanr <- function(df) {
