@@ -1,0 +1,82 @@
+---
+title: "County Outflow Cleaning"
+author: "Lucas Williams"
+date: "April 17, 2018"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+outflow_1516 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1516.csv")
+outflow_1415 <-
+outflow_1314 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1314.csv")
+outflow_1213 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1213.csv")
+outflow_1112 <- read_csv("C:\\Users\\Godot\\Downloads\\countyoutflow1112.csv")
+outflow_1011 <- read_csv("C:\\Users\\Godot\\Downloads\\county1011 (1)\\countyoutflow1011.csv")
+outflow_0910 <- read_csv("C:\\Users\\Godot\\Downloads\\county0910\\countyoutflow0910.csv")
+outflow_0809 <- read_csv("C:\\Users\\Godot\\Downloads\\county0809\\countyoutflow0809.csv")
+```
+```{r}
+outflow_1516_clean <- cleanr(outflow_1516)
+outflow_1415_clean <- cleanr()
+outflow_1314_clean <- cleanr(outflow_1314)
+outflow_1213_clean <- cleanr(outflow_1213)
+outflow_1112_clean <- cleanr(outflow_1112)
+outflow_1011_clean <- cleanr(outflow_1011)
+outflow_0910_clean <- cleanr(outflow_0910)
+outflow_0809_clean <- cleanr(outflow_0809)
+
+outflow_1516_agg <- aggregatr(outflow_1516_clean)
+outflow_1415_agg <- aggregatr()
+outflow_1314_agg <- aggregatr(outflow_1314_clean)
+outflow_1213_agg <- aggregatr(outflow_1213_clean)
+outflow_1112_agg <- aggregatr(outflow_1112_clean)
+outflow_1011_agg <- aggregatr(outflow_1011_clean)
+outflow_0910_agg <- aggregatr(outflow_0910_clean)
+outflow_0809_agg <- aggregatr(outflow_0809_clean)
+```
+```{r}
+outflow <- left_join(outflow_1516_agg, outflow_1314_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_1213_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_1112_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_1011_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_0910_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+outflow <- left_join(outflow, outflow_0809_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
+
+names(outflow) <- c("origin_area", "dest_area", "1516", "1314", "1213", "1112", "1011", "0910", "0809")
+```
+```{r}
+write.csv(outflow_1516_clean, "bay_puget_outflows_1516.csv")
+write.csv(outflow_1314_clean, "bay_puget_outflows_1314.csv")
+write.csv(outflow_1213_clean, "bay_puget_outflows_1213.csv")
+write.csv(outflow_1112_clean, "bay_puget_outflows_1112.csv")
+write.csv(outflow_1011_clean, "bay_puget_outflows_1011.csv")
+write.csv(outflow_0910_clean, "bay_puget_outflows_0910.csv")
+write.csv(outflow_0809_clean, "bay_puget_outflows_0809.csv")
+```
+```{r}
+cleanr <- function(df) {
+  colnames(df) <- c("y1_statefips", "y1_countyfips", "y2_statefips", "y2_countyfips", "y2_state", "y2_countyname", "n1", "n2", "agi")
+  nu_df <- df %>%
+    filter((y1_statefips == "06" & 
+             y1_countyfips %in% c("001","013","041","055","069","075","081","085","087","095","097")) | (y1_statefips == "53" & y1_countyfips %in% c("033","035","053","061","057","067","045","029"))) %>%
+    filter(!str_detect(y2_countyname, "Total|Non|Other|Foreign|Tot|Mig")) %>%
+    mutate(origin_area = ifelse(y1_statefips == "06", "bay_area", "puget_sound_area")) %>%
+    mutate(dest_area = ifelse((y2_statefips == "41" & y2_countyfips %in% c("051", "067", "05")) | (y2_statefips == "53" & y2_countyfips == "011"), "pdx", "else")) %>%
+    mutate(dest_area = ifelse(y2_statefips == "06" & y2_countyfips %in% c("001","013","041","055","069","075","081","085","087","095","097") & dest_area=="else", "bay_area", dest_area)) %>%
+    mutate(dest_area = ifelse(y2_statefips == "06" & y2_countyfips %in% c("111","071","065","037","059") & dest_area=="else", "LA", dest_area)) %>%
+    mutate(dest_area = ifelse(y2_statefips ==  "53" & y2_countyfips %in% c("033","035","053","061","057","067","045","029") & dest_area=="else", "puget_sound", dest_area)) %>%
+    mutate(dest_area = ifelse(dest_area == "else", y2_state, dest_area))
+}
+```
+```{r}
+aggregatr <- function(df) {
+  nudf <- df %>%
+    group_by(origin_area, dest_area) %>%
+    summarise(n = sum(n1)) %>%
+    arrange(desc(n))
+}
+```
