@@ -30,11 +30,12 @@ sea_pop<-c(3990394,3402039,3439809,3494830,3552815,
 migration<-read_csv("migration.csv")
 migration<- migration%>%
   select(origin, destinations, n, year)
-outflow2<-outflow2%>%
+outflow2_pdx<-outflow2_pdx%>%
   rename(origin = origin_area)%>%
-  rename(destinations = dest_area)
+  rename(destinations = dest_area)%>%
+  select(origin,destinations,year, n)
 
-migration2<- rbind(as.data.frame(outflow2), as.data.frame(migration))
+migration2<- rbind(as.data.frame(outflow2_pdx), as.data.frame(migration))
 
 
   
