@@ -40,7 +40,7 @@ p <- plot_ly(
   orientation = "h",
   
   node = list(
-    label = c("Bay Area 2008", "Other 2008", "Seattle Area 2008", "Portland Area 2008",
+    label = c("Bay Area 2015", "Other 2015", "Seattle Area 2015", "Portland Area 2015",
               "Bay Area 2016", "Other 2016", "Seattle Area 2016", "Portland Area 2016"),
     color = c("pink", "blue", "green","orange", "pink", "blue", "green", "orange"),
     pad = 15,
@@ -130,7 +130,7 @@ p <- plot_ly(
   )
 ) %>% 
   layout(
-    title = "Proportions of Migration between 2008 and 2016",
+    title = "Proportions of Migration between 2015 and 2016",
     font = list(
       size = 10
     )
