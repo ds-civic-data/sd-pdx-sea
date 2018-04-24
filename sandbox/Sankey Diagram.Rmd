@@ -13,6 +13,7 @@ library(readr)
 library(tidyverse)
 library(plotly)
 library(networkD3)
+library(riverplot)
 ```
 
 
@@ -72,6 +73,14 @@ migration5<- left_join(migration4, migration_dest, by = c("destinations", "year"
   mutate(id_dest = id_dest+5)
 
 ```
+
+
+
+
+
+
+
+
 
 
 ```{r 2}
@@ -187,39 +196,7 @@ p <- plot_ly(
 
 
 ```{r fuckit}
+riverplot(b)
 
-nodes = data.frame("name" = 
- c("Node A", # Node 0
- "Node B", # Node 1
- "Node C", # Node 2
- "Node D",
- "5",
- "6",
- "7",
- "8"))# Node 3
-links = as.data.frame(matrix(c(
- 0, 5, 1, # Each row represents a link. The first number
- 0, 6, 2, # represents the node being conntected from. 
- 0, 7, 3, # the second number represents the node connected to.
- 0, 8, 4,
- 1, 5, 3,
- 1, 6, 2,
- 1, 7, 1,
- 1, 8, 2,
- 2, 5, 3,
- 2, 6, 4,
- 2, 7, 3,
- 2, 8, 1
- ),# The third number is the value of the node
- byrow = TRUE, ncol = 3))
-names(links) = c("source", "target", "value")
-p<- sankeyNetwork(Links = links, Nodes = nodes,
- Source = "source", Target = "target",
- Value = "value", NodeID = "name",
- fontSize= 12, nodeWidth = 30)
-
-
-
-p
 
 ```
