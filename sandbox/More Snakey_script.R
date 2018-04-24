@@ -18,8 +18,8 @@ dest1<- data.frame(dest_unq3)%>%
   
 #######################################################################################  
 
-nodes0<- data.frame(ID = dest1$ID,
-                    x = dest1$x)
+nodes0<- data.frame(ID = as.character(dest1$ID),
+                    x = as.integer(dest1$x))
 N1<- migration_river$originyr
 N2<- migration_river$destyr
 Value <-migration_river$n
