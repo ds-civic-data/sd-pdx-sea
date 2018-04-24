@@ -15,9 +15,11 @@ source("Measuring_inequality.R")
   
 
 #Not done yet
-ggplot(gini_stats0, aes(x = gini_nam, y = gini_p, color = gini_nam))+
-  geom_point(alpha = .5, size = 5)+
-  geom_text(aes(label = gini_nam), size = 2, color = "black")+
+ggplot(gini_stats0, aes(x = gini_nam, y = gini_p, fill = gini_nam))+
+  geom_bar(stat = "identity")+
+  #geom_point(alpha = .5, size = 5)+
+  geom_text(aes(label = gini_nam), size = 3, angle = 90, 
+            color = "white")+
   theme(legend.position="none")+
   labs(y = "Gini Coefficient")
 
