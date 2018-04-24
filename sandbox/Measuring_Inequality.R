@@ -239,3 +239,5 @@ PUMA <- c(1301, 1302, 1303, 1305, 1314, 1316, 1317, 1318, 1319, 1320, 1321, 1322
 gini_stats0<- data.frame(gini_nam, gini_p, gini_h,PUMA,
                             row.names = NULL)
 
+
+
