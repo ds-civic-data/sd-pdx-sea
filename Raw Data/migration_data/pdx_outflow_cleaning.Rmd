@@ -51,15 +51,15 @@ names(outflow) <- c("origin_area", "dest_area", "2015", "2014", "2013", "2012", 
 outflow2 <- gather(outflow, key = year, value = n, (`2015`:`2008`))
 ```
 ```{r}
-write.csv(outflow_1516_clean, "bay_puget_outflows_1516.csv")
-write.csv(outflow_1415_clean, "bay_puget_outflows_1516.csv")
-write.csv(outflow_1314_clean, "bay_puget_outflows_1314.csv")
-write.csv(outflow_1213_clean, "bay_puget_outflows_1213.csv")
-write.csv(outflow_1112_clean, "bay_puget_outflows_1112.csv")
-write.csv(outflow_1011_clean, "bay_puget_outflows_1011.csv")
-write.csv(outflow_0910_clean, "bay_puget_outflows_0910.csv")
-write.csv(outflow_0809_clean, "bay_puget_outflows_0809.csv")
-write.csv(outflow, "outflow.csv")
+write.csv(outflow_1516_clean, "pdx_outflows_1516.csv")
+write.csv(outflow_1415_clean, "pdx_outflows_1516.csv")
+write.csv(outflow_1314_clean, "pdx_outflows_1314.csv")
+write.csv(outflow_1213_clean, "pdx_outflows_1213.csv")
+write.csv(outflow_1112_clean, "pdx_outflows_1112.csv")
+write.csv(outflow_1011_clean, "pdx_outflows_1011.csv")
+write.csv(outflow_0910_clean, "pdx_outflows_0910.csv")
+write.csv(outflow_0809_clean, "pdx_outflows_0809.csv")
+write.csv(outflow, "outflow_pdx.csv")
 ```
 ```{r}
 cleanr <- function(df) {
@@ -71,7 +71,10 @@ cleanr <- function(df) {
     mutate(origin_area = "pdx") %>%
     mutate(dest_area = ifelse((y2_statefips == "06" & 
              y2_countyfips %in% c("001","013","041","055","069","075","081","085","087","095","097")), "bay_area",
-             ifelse(y2_statefips == "53" & y2_countyfips %in% c("033","035","053","061","057","067","045","029"), "puget_sound_area", "other"))) %>%
+             ifelse(y2_statefips == "53" & y2_countyfips %in% c("033","035","053","061","057","067","045","029"), "puget_sound_area",
+                    ifelse(y1_statefips == "41"|y1_statefips=="53" & 
+             y1_countyfips %in% c("005","051","067","011"),"pdx",
+             "other")))) %>%
     mutate(dest_area = ifelse(dest_area == "else", y2_state, dest_area))
 }
 ```
