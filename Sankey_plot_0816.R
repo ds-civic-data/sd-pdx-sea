@@ -61,7 +61,7 @@ p <- plot_ly(
   )
 ) %>% 
   layout(
-    title = "Proportions of Migration between 2008 and 2016",
+    title = "Proportions of Migration between 2015 and 2016",
     font = list(
       size = 10
     )
