@@ -199,7 +199,8 @@ p <- plot_ly(
 
 
 ```{r fuckit}
-riverplot(b)
+makeRiver(nodes0,edges0,node_styles = styles0)
+riverplot(b, add_mid_points = FALSE)
 
 
 ```
