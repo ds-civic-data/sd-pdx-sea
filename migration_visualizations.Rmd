@@ -1,0 +1,139 @@
+---
+title: "Inflow Visualizations"
+author: "Lucas Williams"
+date: "April 19, 2018"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+install.packages("networkD3")
+library(networkD3)
+```
+```{r}
+inflow <- read_csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\migration_data\\area_area_inflow.csv")
+outflow <- read_csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\migration_data\\outflow.csv") 
+```
+```{r}
+inflow_prime <- inflow %>%
+  select(-X1, tax_year = year, origin, n) %>%
+  year_makr() %>%
+  mutate(destinations = "pdx") %>%
+  mutate(origin = ifelse(origin == "puget_sound", "puget_sound_area", origin)) 
+
+outflow_prime <- outflow %>%
+  select(-X1, tax_year=year, origin=origin_area, destinations = dest_area, n) %>%
+  year_makr() %>%
+  filter(!is.na(n)) %>%
+  mutate(destinations = ifelse(destinations == "puget_sound", "puget_sound_area", destinations))
+
+migration <- rbind(outflow_prime, inflow_prime) %>%
+  unique(by = c("origin", "destinations", "year")) %>%
+  group_by(year, origin) %>%
+  mutate(total = sum(n)) %>%
+  ungroup() %>%
+  mutate(prop = n/total)
+
+write.csv(migration, "migration.csv")
+
+migration_out_state<- migration %>%
+  filter(!origin==destinations)
+```
+```{r}
+year_makr <- function(df) {
+  nudf <- df %>%
+    mutate(year = ifelse(tax_year=="1516", 2015, 
+                       ifelse(tax_year=="1415", 2014,
+                              ifelse(tax_year=="1314", 2013,
+                                     ifelse(tax_year=="1213", 2012,
+                                            ifelse(tax_year=="1112", 2011,
+                                                   ifelse(tax_year=="1011", 2010,
+                                                          ifelse(tax_year=="0910", 2009,
+                                                                 ifelse(tax_year=="0809", 2008, "else"))))))))) 
+}  
+```
+```{r}
+top_inflows <- inflow_prime %>%
+  filter(prop > .02) %>%
+  ggplot(aes(x=origin, y=prop)) + 
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+
+top_out_state_inflows <- inflow_prime %>%
+  filter(prop>.02 & !origin %in% c("oregon", "pdx")) %>%
+  ggplot(aes(x=origin, y=prop)) + 
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+
+puget_outflows <- outflow_prime %>%
+  filter(prop>.015 & origin_area == "puget_sound_area") %>%
+  ggplot(aes(x=dest_area, y=prop)) +
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+
+out_state_puget_outflow <- outflow_prime %>%
+  filter(prop >.015 & origin_area == "puget_sound_area" & !dest_area %in% c("WA", "puget_sound")) %>%
+  ggplot(aes(x=dest_area, y=prop)) +
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+
+bay_outflow <- outflow_prime %>%
+  filter(prop > 0.015 & origin == "bay_area") %>%
+  ggplot(aes(x=destinations, y=prop)) +
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+
+out_state_bay_outflows <- outflow_prime %>%
+  filter(prop >.015 & origin_area == "bay_area" & !dest_area %in% c("CA", "bay_area", "LA")) %>%
+  ggplot(aes(x=dest_area, y=prop)) +
+    geom_col() +
+    facet_wrap(~year) +
+    coord_flip()
+```
+
+```{r}
+inflow_prime %>%
+  mutate(destinations = "Portland") %>%
+  filter(prop >0.02 & !origin %in% c("pdx", "oregon")) %>%
+  plottr()
+
+outflow_prime %>%
+  filter(prop>0.015 & (origin != "bay_area" & !destinations %in% c("CA", "LA", "bay"))) %>%
+  plottr()
+```
+
+```{r}
+migration_out_state %>%
+  filter(prop > .012 & year==2015) %>%
+  plottr()
+```
+```{r}
+df <- migration_out_state %>%
+  filter(year==2015)
+name_vec <- c(unique(df$origin), unique(df$destinations))
+nodes <- data.frame(name=unique(name_vec), id = 0:(length(unique(name_vec))-1))
+links <- df %>% 
+  left_join(nodes, by = c("origin"="name")) %>%
+  rename(origin_id = id) %>%
+  left_join(nodes, by = c("destinations"="name")) %>%
+  rename(dest_id = id)
+```
+```{r}
+
+plottr <- function(df) {
+  name_vec <- c(unique(df$origin), unique(df$destinations))
+  nodes <- data.frame(name = unique(name_vec), id = 0:(length(unique(name_vec))-1))
+  links <- df %>%
+    left_join(nodes, by = c("origin" = "name")) %>%
+    rename(origin_id = id) %>%
+    left_join(nodes, by = c("destinations" = "name")) %>%
+    rename(dest_id = id)
+
+  sankeyNetwork(Links = links, Nodes = nodes, Source = "origin_id", Target = "dest_id", Value = "n", NodeID = "name", fontSize = 16)
+}
+```
