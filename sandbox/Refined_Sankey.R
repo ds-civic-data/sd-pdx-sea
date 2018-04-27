@@ -63,28 +63,29 @@ edges0<- data.frame(N1, N2, Value, ID, stringsAsFactors = FALSE)
 
 #Styles (NEED TO BE FIXED)
 node_labels0<- c(bay_area_1 ="Bay Area 2008", 
+                 pdx_1 = "Portland 2008",
                  puget_sound_area_1 = "Seattle 2008",
-                 bay_area_2 ="Bay Area 2009", 
+                 bay_area_2 ="Bay Area 2009",
+                 pdx_2 = "Portland 2009", 
                  puget_sound_area_2 = "Seattle 2009",
-                 pdx_2 = "Portland 2009",
-                 bay_area_3 ="Bay Area 2010", 
+                 bay_area_3 ="Bay Area 2010",
+                 pdx_3 = "Portland 2010", 
                  puget_sound_area_3 = "Seattle 2010",
-                 pdx_3 = "Portland 2010",
-                 bay_area_4 ="Bay Area 2011", 
+                 bay_area_4 ="Bay Area 2011",
+                 pdx_4 = "Portland 2011", 
                  puget_sound_area_4 = "Seattle 2011",
-                 pdx_4 = "Portland 2011",
-                 bay_area_5 ="Bay Area 2012", 
+                 bay_area_5 ="Bay Area 2012",
+                 pdx_5 = "Portland 2012", 
                  puget_sound_area_5 = "Seattle 2012",
-                 pdx_5 = "Portland 2012",
-                 bay_area_6 ="Bay Area 2013", 
+                 bay_area_6 ="Bay Area 2013",
+                 pdx_6 = "Portland 2013", 
                  puget_sound_area_6 = "Seattle 2013",
-                 pdx_6 = "Portland 2013",
-                 bay_area_7 ="Bay Area 2014", 
+                 bay_area_7 ="Bay Area 2014",
+                 pdx_7 = "Portland 2014", 
                  puget_sound_area_7 = "Seattle 2014",
-                 pdx_7 = "Portland 2014",
-                 bay_area_8 ="Bay Area 2015", 
+                 bay_area_8 ="Bay Area 2015",
+                 pdx_8 = "Portland 2015", 
                  puget_sound_area_8 = "Seattle 2015",
-                 pdx_8 = "Portland 2015",
                  bay_area_9 ="Bay Area 2016",
                  pdx_9 = "Portland 2016", 
                  puget_sound_area_9 = "Seattle 2016")
@@ -93,6 +94,7 @@ node_labels0<- c(bay_area_1 ="Bay Area 2008",
 
 styles0<- list(bay_area_1 = list(col = "darkorange",lty = 5),
                puget_sound_area_1 = list(col = "hotpink4",lty = 5),
+               pdx_1 = list(col = "skyblue4",lty = 5),
                bay_area_2 = list(col = "darkorange",lty = 5),
                puget_sound_area_2 = list(col = "hotpink4",lty = 5),
                pdx_2 = list(col = "skyblue4",lty = 5),
@@ -156,11 +158,11 @@ curveseg<- function (x0, x1, y0, y1, width = 5, nsteps = 50, col = "#ffcc0066",
 
 #####################################################################################################
 #Plotting
-migriver<- makeRiver(nodes0,edges0)
- #                node_labels = node_labels0, node_styles = styles0)
+migriver<- makeRiver(nodes0,edges0,
+                node_labels = node_labels0, node_styles = styles0)
 
-riverplot(migriver, add_mid_points = FALSE)
- #       default_style = styles0)
+riverplot(migriver, add_mid_points = FALSE,
+       default_style = styles0)
 
 ###########################################################################################################
 
