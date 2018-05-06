@@ -14,8 +14,11 @@ outflow2_pdx<-outflow2_pdx%>%
   rename(destinations = dest_area)%>%
   select(origin,destinations,year, n)
 
-migration2<- rbind(as.data.frame(outflow2_pdx), as.data.frame(migration))
-
+migration2<- rbind(as.data.frame(outflow2_pdx), as.data.frame(migration))%>%
+  group_by(origin, destinations, year)%>%
+  summarize(n = max(n))%>%
+  mutate(destinations = destinations, year = year, origin = origin)
+migration2<- as.data.frame(migration2)
 migration3<- migration2%>%
   #mutate(origin = ifelse(origin=="bay_area"|origin=="puget_sound_area"|origin=="pdx",
   #                       origin, "other"))%>%
