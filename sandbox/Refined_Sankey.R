@@ -128,48 +128,72 @@ node_labels0<- c(AZ_1  = "AZ 2008",
 
 styles0<- list(AZ_1 = list(col = "gold1", lty = 5),
                bay_area_1 = list(col = "darkorange",lty = 5),
+               CA_1 = list(col = "dodgerblue",lty = 5),
+               LA_1 = list(col = "darkred",lty = 5),
                puget_sound_area_1 = list(col = "hotpink4",lty = 5),
                pdx_1 = list(col = "skyblue4",lty = 5),
+               WA_1 = list(col = "darkorchid3",lty = 5),
                AZ_2 = list(col = "gold1", lty = 5),
                bay_area_2 = list(col = "darkorange",lty = 5),
+               CA_2 = list(col = "dodgerblue",lty = 5),
+               LA_2 = list(col = "darkred",lty = 5),
                puget_sound_area_2 = list(col = "hotpink4",lty = 5),
                pdx_2 = list(col = "skyblue4",lty = 5),
+               WA_2 = list(col = "darkorchid3",lty = 5),
                AZ_3 = list(col = "gold1", lty = 5),
                bay_area_3 = list(col = "darkorange",lty = 5),
+               CA_3 = list(col = "dodgerblue",lty = 5),
+               LA_3 = list(col = "darkred",lty = 5),
                puget_sound_area_3 = list(col = "hotpink4",lty = 5),
                pdx_3 = list(col = "skyblue4",lty = 5),
+               WA_3 = list(col = "darkorchid3",lty = 5),
                AZ_4 = list(col = "gold1", lty = 5),
                bay_area_4 = list(col = "darkorange",lty = 5),
+               CA_4 = list(col = "dodgerblue",lty = 5),
+               LA_4 = list(col = "darkred",lty = 5),
                puget_sound_area_4 = list(col = "hotpink4",lty = 5),
                pdx_4 = list(col = "skyblue4",lty = 5),
+               WA_4 = list(col = "darkorchid3",lty = 5),
                AZ_5 = list(col = "gold1", lty = 5),
                bay_area_5 = list(col = "darkorange",lty = 5),
+               CA_5 = list(col = "dodgerblue",lty = 5),
+               LA_5 = list(col = "darkred",lty = 5),
                puget_sound_area_5 = list(col = "hotpink4",lty = 5),
                pdx_5 = list(col = "skyblue4",lty = 5),
+               WA_5 = list(col = "darkorchid3",lty = 5),
                AZ_6 = list(col = "gold1", lty = 5),
                bay_area_6 = list(col = "darkorange",lty = 5),
+               CA_6 = list(col = "dodgerblue",lty = 5),
+               LA_6 = list(col = "darkred",lty = 5),
                puget_sound_area_6 = list(col = "hotpink4",lty = 5),
                pdx_6 = list(col = "skyblue4",lty = 5),
+               WA_6 = list(col = "darkorchid3",lty = 5),
                AZ_7 = list(col = "gold1", lty = 5),
                bay_area_7 = list(col = "darkorange",lty = 5),
+               CA_7 = list(col = "dodgerblue",lty = 5),
+               LA_7 = list(col = "darkred",lty = 5),
                puget_sound_area_7 = list(col = "hotpink4",lty = 5),
                pdx_7 = list(col = "skyblue4",lty = 5),
+               WA_7 = list(col = "darkorchid3",lty = 5),
                AZ_8 = list(col = "gold1", lty = 5),
                bay_area_8 = list(col = "darkorange",lty = 5),
+               CA_8 = list(col = "dodgerblue",lty = 5),
+               LA_8 = list(col = "darkred",lty = 5),
                puget_sound_area_8 = list(col = "hotpink4",lty = 5),
                pdx_8 = list(col = "skyblue4",lty = 5),
+               WA_8 = list(col = "darkorchid3",lty = 5),
                bay_area_9 = list(col = "darkorange",lty = 5),
                puget_sound_area_9 = list(col = "hotpink4",lty = 5),
                pdx_9 = list(col = "skyblue4",lty = 5))
 
 ##########################################################
 #Plotting
-migriver<- makeRiver(nodes0,edges0,
-          node_labels = node_labels0)
-#, node_styles = styles0)
+migriver<- makeRiver(nodes0,edges0
+          ,node_labels = node_labels0
+          ,node_styles = styles0)
 
-riverplot(migriver, add_mid_points = FALSE)
-     #  default_style = styles0)
-
+riverplot(migriver, add_mid_points = FALSE
+          ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
 ###########################################################################################################
+
 
