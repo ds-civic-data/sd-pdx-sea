@@ -1,0 +1,62 @@
+---
+title: "Migration Conditional Probability"
+author: "Lucas Williams"
+date: "May 5, 2018"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+```
+```{r}
+outflow <- read_csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\migration_data\\outflow.csv")
+inflow <- read_csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\migration_data\\area_area_inflow.csv")
+```
+```{r}
+year_makr <- function(df) {
+  nudf <- df %>%
+    mutate(cal_year = ifelse(year=="1516", 2015, 
+                       ifelse(year=="1415", 2014,
+                              ifelse(year=="1314", 2013,
+                                     ifelse(year=="1213", 2012,
+                                            ifelse(year=="1112", 2011,
+                                                   ifelse(year=="1011", 2010,
+                                                          ifelse(year=="0910", 2009,
+                                                                 ifelse(year=="0809", 2008, "else"))))))))) 
+  return(nudf)
+}  
+```
+```{r}
+outflow_df <- outflow %>%
+  na.omit() %>%
+  group_by(origin_area, year) %>%
+  mutate(total_outflow = sum(n)) %>%
+  ungroup() %>%
+  mutate(prop=n/total_outflow) %>%
+  filter(dest_area=="pdx") %>%
+  year_makr() %>%
+  mutate(cal_year = as.numeric(cal_year)) %>%
+  mutate(origin_area=ifelse(origin_area=="bay_area", "Leaving SF for PDX", "Leaving SEA for PDX"))
+
+inflow_df <- inflow %>%
+  na.omit() %>%
+  year_makr() %>%
+  mutate(cal_year = as.numeric(cal_year)) %>%
+  group_by(year) %>%
+  mutate(total_inflow = sum(n)) %>%
+  ungroup() %>%
+  mutate(prop = n/total_inflow) %>%
+  filter(origin %in% c("bay_area", "puget_sound")) %>%
+  mutate(origin = ifelse(origin=="bay_area", "Entering PDX from SF", "Entering PDX from SEA"))
+```
+```{r}
+ggplot() +
+  geom_smooth(data=outflow_df, aes(x=cal_year, y=prop, col=origin_area), se = F) +
+  geom_smooth(data=inflow_df, aes(x=cal_year, y=prop, col=origin), se=F) +
+  labs(x="Year",
+       y="Proportion",
+       title="Outflow from SF and Seattle into PDX & Inflow into PDX from SF and Seattle",
+       colour="Migration Pattern")
+  
+```
+
