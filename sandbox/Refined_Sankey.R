@@ -19,6 +19,8 @@ migration2<- rbind(as.data.frame(outflow2_pdx), as.data.frame(migration))%>%
   summarize(n = max(n))%>%
   mutate(destinations = destinations, year = year, origin = origin)
 migration2<- as.data.frame(migration2)
+write.csv(migration2, "corrected_migration.csv")
+
 migration3<- migration2%>%
   #mutate(origin = ifelse(origin=="bay_area"|origin=="puget_sound_area"|origin=="pdx",
   #                       origin, "other"))%>%
