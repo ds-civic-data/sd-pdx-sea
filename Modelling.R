@@ -19,17 +19,18 @@ modeldata4$tchb_exp<-log((modeldata4$tech_biz))^50
 modeldata4$biz_exp<-(modeldata4$business)^-200
 
 
-mod0<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff), 
+
+mod0<- lm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+abs(med_housing_change)+biz_exp, 
           data = modeldata4)
-step(mod0, text = "LRT")
 summary(mod0)
+step(mod0, text = "LRT")
 confint(mod0)
 exp(confint(mod0))
 residuals(mod0, type="deviance")
 
 
 
-mod1<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+biz_exp, 
+mod1<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+abs(med_housing_change)+biz_exp, 
            data = modeldata4)
 summary(mod1)
 confint(mod1)
@@ -39,7 +40,7 @@ confint(mod1)
 model_mult$age_exp<- .36+(model_mult$median_age)^-2
 model_mult$housav_exp<-(model_mult$avg_house)^-7
 model_mult$tech_biz_exp<-(model_mult$tech_biz)^50
-modm0<- lm(gini~  housav_exp+age_exp+tech_biz_exp, data = model_mult)
+modm0<- lm(gini~  housav_exp+age_exp+tech_biz_exp+avg, data = model_mult)
 summary(modm0)
 
 #################################################################################
@@ -67,19 +68,23 @@ modeldata4$blue_log<-log(modeldata4$blue_prop)
 modeldata4$white_exp<- (modeldata4$white_prop)^10
 modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^10
 modeldata4$gini_log<-(log(modeldata4$gini))
+modeldata4$gini_exp<-(modeldata4$gini)^50
 # modeldata4$cd_exp<-(abs(modeldata4$class_diff))^5
 # #modeldata4$biz_exp<-(modeldata4$business)^-200
+modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^-75
 
-
-
-
-hmod0<- lm(housm_log ~ gini+wash+mult+white_exp+tchb_exp, 
+hmod0<- lm(med_house ~ gini_exp+wash+mult+white_exp+med_housing_change+tchb_exp, 
             data = modeldata4)
 summary(hmod0)
 
-
+modeldata4$gini_exp<-(modeldata4$gini)^50
 modeldata4$gini_log<-(log(modeldata4$gini))^-10
-hmod1<- lm(housav_log~ gini+wash+mult+white_exp+tchb_exp, 
-            data = modeldata4)
+modeldata4$cd_log<-log(abs(modeldata4$class_diff))
+modeldata4$ahc_log<-log(abs(modeldata4$avg_housing_change))
+modeldata4$mage_exp<-(modeldata4$median_age)^-20
+modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^-75
+
+hmod1<- lm(avg_house ~ wash + mult + white_exp + tchb_exp +class_diff+
+             avg_housing_change + gini_exp, data = modeldata4)
 summary(hmod1)
 

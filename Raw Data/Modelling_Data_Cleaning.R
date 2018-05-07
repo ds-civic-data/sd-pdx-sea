@@ -84,12 +84,13 @@ modeldata5<-modeldata5%>%
             yrs_2014 = max(yr_2014)-max(yr_2013),
             yrs_2015 = max(yr_2015)-max(yr_2014),
             yrs_2016 = max(yr_2016)-max(yr_2015),
-            yrs_2008 = max(yr_2008)/10)%>%
+            yrs_2008 = yrs_2009-2000)%>%
   gather(year, med_housing_change, yrs_2008, yrs_2009, yrs_2010, yrs_2011, 
                                    yrs_2012, yrs_2013, yrs_2014, yrs_2015, yrs_2016)%>%
   separate(year, into = c("trash", "year"))%>%
   mutate(year = as.integer(year))%>%
-  select(-trash)  
+  select(-trash)%>%
+  filter(abs(med_housing_change)<= 15000)
 
 modeldata6<- modeldata4%>%
   mutate(year = paste("yr", as.character(year), sep = "_"))%>%
@@ -106,12 +107,13 @@ modeldata6<-modeldata6%>%
             yrs_2014 = max(yr_2014)-max(yr_2013),
             yrs_2015 = max(yr_2015)-max(yr_2014),
             yrs_2016 = max(yr_2016)-max(yr_2015),
-            yrs_2008 = max(yr_2008)/10)%>%
+            yrs_2008 = yrs_2009-2000)%>%
   gather(year, avg_housing_change, yrs_2008, yrs_2009, yrs_2010, yrs_2011, 
          yrs_2012, yrs_2013, yrs_2014, yrs_2015, yrs_2016)%>%
   separate(year, into = c("trash", "year"))%>%
   mutate(year = as.integer(year))%>%
-  select(-trash)  
+  select(-trash)%>%
+  filter(abs(avg_housing_change)<=15000)
 
 modeldata4<- left_join(modeldata4, modeldata5)
 modeldata4<- left_join(modeldata4, modeldata6)
@@ -142,7 +144,7 @@ ploter<- function(dat, exo){
 }
 
 hploter<- function(dat, exo){
-  ggplot(dat, aes(x = exo, y = log(med_house)))+
+  ggplot(dat, aes(x = exo, y = avg_house))+
     geom_point()+
     geom_smooth(se = FALSE, span = 1)
 }
@@ -166,13 +168,14 @@ ploter(modeldata4, modeldata4$tech_biz)
 #negative linear (modeldata4, unexpected), grouped by county
 ploter(modeldata4, modeldata4$class_diff)
 #upwards linear
+ploter(modeldata4, modeldata4$avg_housing_change)
+ploter(modeldata4, modeldata4$med_housing_change)
 ploter(modeldata4, modeldata4$service)
 ploter(modeldata4, modeldata4$tech)
 ploter(modeldata4, modeldata4$business)
 ploter(modeldata4, modeldata4$civil_servant)
 ploter(modeldata4, modeldata4$healthcare)
-
-
+ploter(modeldata4, modeldata4$healthcare)
 
 hploter(modeldata4, modeldata4$median_age)
 #grouped by county, exponential
@@ -195,5 +198,6 @@ hploter(modeldata4, modeldata4$tech)
 hploter(modeldata4, modeldata4$business)
 hploter(modeldata4, modeldata4$civil_servant)
 hploter(modeldata4, modeldata4$healthcare)
-
+hploter(modeldata4, log(abs(modeldata4$avg_housing_change)))
+hploter(modeldata4, modeldata4$med_housing_change)
 
