@@ -144,7 +144,7 @@ ploter<- function(dat, exo){
 }
 
 hploter<- function(dat, exo){
-  ggplot(dat, aes(x = exo, y = avg_house))+
+  ggplot(dat, aes(x = exo, y = med_house))+
     geom_point()+
     geom_smooth(se = FALSE, span = 1)
 }
@@ -175,6 +175,7 @@ ploter(modeldata4, modeldata4$tech)
 ploter(modeldata4, modeldata4$business)
 ploter(modeldata4, modeldata4$civil_servant)
 ploter(modeldata4, modeldata4$healthcare)
+
 ploter(modeldata4, modeldata4$healthcare)
 
 hploter(modeldata4, modeldata4$median_age)

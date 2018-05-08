@@ -20,9 +20,13 @@ modeldata4$biz_exp<-(modeldata4$business)^-200
 
 
 
-mod0<- lm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+abs(med_housing_change)+biz_exp, 
+mod0<- lm(gini ~mult+wash+median_age+abs(class_diff)+
+          +abs(med_housing_change)
+          +avg_house
+          +log(med_house), 
           data = modeldata4)
 summary(mod0)
+ploter(modeldata4, modeldata4$mage_log)
 step(mod0, text = "LRT")
 confint(mod0)
 exp(confint(mod0))
@@ -30,7 +34,8 @@ residuals(mod0, type="deviance")
 
 
 
-mod1<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+abs(med_housing_change)+biz_exp, 
+mod1<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+
+             abs(med_housing_change)+biz_exp, 
            data = modeldata4)
 summary(mod1)
 confint(mod1)
@@ -68,12 +73,18 @@ modeldata4$blue_log<-log(modeldata4$blue_prop)
 modeldata4$white_exp<- (modeldata4$white_prop)^10
 modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^10
 modeldata4$gini_log<-(log(modeldata4$gini))
-modeldata4$gini_exp<-(modeldata4$gini)^50
 # modeldata4$cd_exp<-(abs(modeldata4$class_diff))^5
 # #modeldata4$biz_exp<-(modeldata4$business)^-200
-modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^-75
+modeldata4$tech_exp<-(modeldata4$tech)^3
+modeldata4$tchb_exp<-(log(modeldata4$tech_biz))^-10
+modeldata4$gini_exp<-(log(modeldata4$gini))^-50
 
-hmod0<- lm(med_house ~ gini_exp+wash+mult+white_exp+med_housing_change+tchb_exp, 
+hmod0<- lm(med_house ~ gini_exp+
+             median_age+
+             wash+mult+
+             white_exp+
+             med_housing_change+
+             tchb_exp, 
             data = modeldata4)
 summary(hmod0)
 
