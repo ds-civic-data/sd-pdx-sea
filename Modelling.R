@@ -17,28 +17,42 @@ modeldata4$mage_log<- log(modeldata4$median_age)
 modeldata4$housm_log<-log(modeldata4$med_house)
 modeldata4$tchb_exp<-log((modeldata4$tech_biz))^50
 modeldata4$biz_exp<-(modeldata4$business)^-200
+modeldata4$agi_log<-(log(modeldata4$agi))
 
 
-
-mod0<- lm(gini ~mult+wash+median_age+abs(class_diff)+
+mod0<- lm(log(gini) ~mult
           +abs(med_housing_change)
-          +avg_house
-          +log(med_house), 
+          +log(avg_house)
+          +log(med_house)
+          +log(agi), 
           data = modeldata4)
 summary(mod0)
-ploter(modeldata4, modeldata4$mage_log)
-step(mod0, text = "LRT")
-confint(mod0)
-exp(confint(mod0))
-residuals(mod0, type="deviance")
 
 
-
-mod1<- glm((gini)^3 ~mult+wash+mage_log+abs(class_diff)+
-             abs(med_housing_change)+biz_exp, 
-           data = modeldata4)
+mod1<- lm(log(gini) ~mult
+          +abs(med_housing_change)
+          +log(avg_house)
+          +log(med_house)
+          +log(n), 
+          data = modeldata4)
 summary(mod1)
-confint(mod1)
+
+mod2<- lm(log(gini) ~mult+wash
+          +abs(med_housing_change)
+          +log(avg_house)
+          +log(med_house)
+          +log(agi), 
+          data = modeldata4)
+summary(mod2)
+
+
+mod3<- lm(log(gini) ~mult+wash
+          +abs(med_housing_change)
+          +log(avg_house)
+          +log(med_house)
+          +log(n), 
+          data = modeldata4)
+summary(mod3)
 #################################################################################
 #Models for Multnomah
 # use df model_mult

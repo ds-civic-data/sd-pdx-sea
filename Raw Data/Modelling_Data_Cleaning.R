@@ -11,6 +11,8 @@ taxlot_data1<- taxlot_data%>%
 
 ##################################################################################
 ### Migration Data(COMING SOON TO CODES NEAR YOU)
+inflow_county <- read_csv("inflow_county.csv")
+
 ##################################################################################
 #Occupation Data
 pdx_counties_occupations<- read_csv("pdx_counties_occupations.csv")
@@ -52,6 +54,8 @@ pdx_count_type1<- pdx_count_type%>%
 
 ACS_gini<- read_csv("ACS_gini.csv")
 ACS_agesex<- read_csv("ACS_agesex.csv")
+
+
 
 ##################################################################################
 #Model data al together
@@ -118,7 +122,16 @@ modeldata6<-modeldata6%>%
 modeldata4<- left_join(modeldata4, modeldata5)
 modeldata4<- left_join(modeldata4, modeldata6)
 
-write.csv(modeldata4, "modelling_data.csv")
+
+#write.csv(modeldata4, "modelling_data.csv")
+modelling_data <- read_csv("modelling_data.csv")
+modelling_data1 <- left_join(modelling_data, inflow_county, by = c("county", "year"))
+write.csv(modelling_data1,"modelling_data1.csv" )
+
+modeldata4<- read_csv("modelling_data1.csv")
+modeldata4<- modeldata4%>%
+  filter(agi<=2900000)
+
 ##################################################################################
 #Spliting by county
 model_mult<- modeldata4%>%
@@ -138,7 +151,7 @@ model_wash<- modeldata4%>%
 #Plotting to get a sense of models
 
 ploter<- function(dat, exo){
-  ggplot(dat, aes(x = exo, y = gini, color = county))+
+  ggplot(dat, aes(x = exo, y = gini))+
     geom_point()+
     geom_smooth(se = FALSE, span = 1)
 }
@@ -155,7 +168,8 @@ hploter<- function(dat, exo){
 ploter(modeldata4, modeldata4$median_age)
 #grouped by county, exponential
 # looks like a sin wave?
-
+ploter(modeldata4, (modeldata4$agi)^-2)
+ploter(modeldata4, log(modeldata4$n))
 ploter(modeldata4, modeldata4$med_house)
 #looks linear by county
 ploter(modeldata4, modeldata4$avg_house)
