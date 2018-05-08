@@ -6,21 +6,14 @@ April 22, 2018
 ``` r
 library(tidyverse)
 library(rgdal)
-```
-
-    ## Warning: package 'rgdal' was built under R version 3.4.4
-
-    ## Warning: package 'sp' was built under R version 3.4.4
-
-``` r
 library(lubridate)
 library(ggmap)
+library(broom)
 ```
 
-    ## Warning: package 'ggmap' was built under R version 3.4.4
-
 ``` r
-library(broom)
+#load a map of portland centered on the burnside bridge
+map <- get_map(location="Burnside Bridge", zoom = 9, maptype="roadmap")
 ```
 
 ``` r
@@ -64,16 +57,14 @@ taxlot_data <- taxlots@data %>%
 #drop the plus four from zipcode
   select(-`+4`) %>%
 #coerce sale price to numeric
-  mutate(SALEPRICE = as.numeric(SALEPRICE)) %>%
+  mutate(SALEPRICE = as.numeric(as.character(SALEPRICE))) %>%
 #filter to interesting data
   filter(SALEDATE >= filter_dates[1] & SALEDATE <= filter_dates[2]) %>%
   filter(LANDUSE == "SFR") %>%
+  filter(SALEPRICE > 100) %>%
 #recode the county factor
   mutate(COUNTY = fct_recode(COUNTY, Clackamas="C", Washington="W", Multnomah="M"))
 ```
-
-    ## Warning: Too few values at 143859 locations: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    ## 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...
 
 ``` r
 #create list of relevant zipcodes
@@ -100,14 +91,6 @@ total_tax <- taxlot_data %>%
   group_by(year, zip) %>%
   summarise(med_price = median(SALEPRICE)) %>%
   right_join(zip_df, by=c("zip"="ZCTA5CE10"))
-```
-
-    ## Warning: Column `zip`/`ZCTA5CE10` joining character vector and factor,
-    ## coercing into character vector
-
-``` r
-#load a map of portland centered on the burnside bridge
-map <- get_map(location="Burnside Bridge", zoom = 9, maptype="roadmap")
 ```
 
 ``` r
@@ -141,30 +124,6 @@ taxlot_map_2017 <- plottr(2017)
 #display graph and maps
 price_zip_timeseries
 ```
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
-
-    ## Warning: Computation failed in `stat_smooth()`:
-    ## x has insufficient unique values to support 10 knots: reduce k.
 
 ![](taxlot_files/figure-markdown_github/unnamed-chunk-8-1.png)
 

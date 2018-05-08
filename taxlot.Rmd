@@ -5,21 +5,25 @@ date: "April 22, 2018"
 output: github_document
 ---
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(rgdal)
 library(lubridate)
 library(ggmap)
 library(broom)
 ```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
+#load a map of portland centered on the burnside bridge
+map <- get_map(location="Burnside Bridge", zoom = 9, maptype="roadmap")
+```
+```{r, message=FALSE, warning=FALSE}
 #Load shapefiles
 zip_shape <- "C:\\Users\\Godot\\Downloads\\tl_2013_us_zcta510\\tl_2013_us_zcta510.shp"
 zip_layer <- readOGR(zip_shape, layer = "tl_2013_us_zcta510")
 txlt <- "C:\\Users\\Godot\\Downloads\\taxlots\\taxlots.shp"
 taxlots <- readOGR(txlt, layer = "taxlots")
 ```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 #set dates to filter between
 filter_dates <- as.Date(c("2006-01-01", "2018-01-01"))
 taxlot_data <- taxlots@data %>%
@@ -37,14 +41,15 @@ taxlot_data <- taxlots@data %>%
 #drop the plus four from zipcode
   select(-`+4`) %>%
 #coerce sale price to numeric
-  mutate(SALEPRICE = as.numeric(SALEPRICE)) %>%
+  mutate(SALEPRICE = as.numeric(as.character(SALEPRICE))) %>%
 #filter to interesting data
   filter(SALEDATE >= filter_dates[1] & SALEDATE <= filter_dates[2]) %>%
   filter(LANDUSE == "SFR") %>%
+  filter(SALEPRICE > 100) %>%
 #recode the county factor
   mutate(COUNTY = fct_recode(COUNTY, Clackamas="C", Washington="W", Multnomah="M"))
 ```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 #create list of relevant zipcodes
 pdx_zips <- taxlot_data$zip %>%
   unique()
@@ -62,18 +67,14 @@ zip_tidy$id <- as.numeric(zip_tidy$id)
 #join the converted data frame to the shapefiles data by the assigned row id's
 zip_df <- left_join(zip_tidy, z@data, by="id")
 ```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 #Summarise the taxlot data for plotting and join to the ex-shapefile data frame
 total_tax <- taxlot_data %>%
   group_by(year, zip) %>%
   summarise(med_price = median(SALEPRICE)) %>%
   right_join(zip_df, by=c("zip"="ZCTA5CE10"))
 ```
-```{r, message=FALSE}
-#load a map of portland centered on the burnside bridge
-map <- get_map(location="Burnside Bridge", zoom = 9, maptype="roadmap")
-```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 #plotting function used to differentiate years
 plottr <- function(yr) {
   graphic <- ggmap(map) +
@@ -89,7 +90,7 @@ plottr <- function(yr) {
   return(graphic)
 }
 ```
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 #show change in prices over time for each zipcode
 price_zip_timeseries <- ggplot(taxlot_data, aes(x=SALEDATE, y=SALEPRICE)) +
   geom_smooth(se=F) +
