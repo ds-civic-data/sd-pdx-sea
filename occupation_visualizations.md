@@ -7,24 +7,24 @@ May 3, 2018
 library(tidyverse)
 ```
 
-    ## -- Attaching packages ------------------------------------------------------------------------------------- tidyverse 1.2.1 --
+    ## -- Attaching packages -------------------------------------------------------------- tidyverse 1.2.1 --
 
     ## v ggplot2 2.2.1     v purrr   0.2.4
     ## v tibble  1.4.2     v dplyr   0.7.4
     ## v tidyr   0.7.2     v stringr 1.2.0
     ## v readr   1.1.1     v forcats 0.3.0
 
-    ## -- Conflicts ---------------------------------------------------------------------------------------- tidyverse_conflicts() --
+    ## -- Conflicts ----------------------------------------------------------------- tidyverse_conflicts() --
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
 ``` r
-pdx_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\pdx_occupations.csv")
-pdx_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\pdx_counties_occupations.csv")
-sf_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\sf_occupations.csv")
-sf_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\sf_counties_occupations.csv")
-sea_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\sea_occupations.csv")
-sea_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\sea_counties_occupations.csv")
+pdx_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\pdx_occupations.csv")
+pdx_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\pdx_counties_occupations.csv")
+sf_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\sf_occupations.csv")
+sf_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\sf_counties_occupations.csv")
+sea_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\sea_occupations.csv")
+sea_counties_occupations <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Raw Data\\sea_counties_occupations.csv")
 ```
 
 ``` r
@@ -37,7 +37,11 @@ pdx_class_county <- pdx_counties_occupations %>%
   ggplot(aes(x=year, y=prop_county_class, col=job_class)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    great_theme
+    great_theme+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Portland Occupation Distribution by County")
 pdx_class_county
 ```
 
@@ -52,7 +56,11 @@ pdx_sector_county <- pdx_counties_occupations %>%
   ggplot(aes(x=year, y = prop_county_type, col = job_type)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Industry",
+         title = "Portland Occupation Distribution by County")
 pdx_sector_county
 ```
 
@@ -66,7 +74,11 @@ pdx_class <- pdx_occupations %>%
   mutate(year=as.integer(year)) %>%
   ggplot(aes(x=year,y=job_class_prop, col=job_class)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Portland Occupation Distribution")
 pdx_class
 ```
 
@@ -80,7 +92,11 @@ pdx_sector <- pdx_occupations %>%
   mutate(year=as.integer(year)) %>%
   ggplot(aes(x=year, y=job_type_prop, col=job_type)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Portland Occupation Distribution")
 pdx_sector
 ```
 
@@ -94,7 +110,11 @@ sf_class_county <- sf_counties_occupations %>%
   ggplot(aes(x=year, y=prop_county_class, col=job_class)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Bay Area Occupation Distribution by County")
 sf_class_county
 ```
 
@@ -132,7 +152,11 @@ sf_sector_county <- sf_counties_occupations %>%
   ggplot(aes(x=year, y = prop_county_type, col = job_type)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Bay Area Occupation Distribution by County")
 sf_sector_county
 ```
 
@@ -244,7 +268,11 @@ sf_sector_county
 sf_class <- sf_occupations %>%
   ggplot(aes(x=year,y=job_class_prop, col=job_class)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Bay Area Occupation Distribution")
 sf_class
 ```
 
@@ -257,7 +285,11 @@ sf_class
 sf_sector <- sf_occupations %>%
   ggplot(aes(x=year, y=job_type_prop, col=job_type)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Bay Area Occupation Distribution")
 sf_sector
 ```
 
@@ -271,7 +303,11 @@ sea_class_county <- sea_counties_occupations %>%
   ggplot(aes(x=year, y=prop_county_class, col=job_class)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Seattle Area Occupation Distribution by County")
 sea_class_county
 ```
 
@@ -285,7 +321,11 @@ sea_sector_county <- sea_counties_occupations %>%
   ggplot(aes(x=year, y = prop_county_type, col = job_type)) +
     geom_smooth(se=F) +
     facet_wrap(~county) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Seattle Area Occupation Distribution by County")
 sea_sector_county
 ```
 
@@ -298,7 +338,11 @@ sea_sector_county
 sea_class<- sea_occupations %>%
   ggplot(aes(x=year,y=job_class_prop, col=job_class)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Seattle Area Occupation Distribution")
 sea_class
 ```
 
@@ -311,7 +355,11 @@ sea_class
 sea_sector<-sea_occupations %>%
   ggplot(aes(x=year, y=job_type_prop, col=job_type)) +
     geom_smooth(se=F) +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90))+
+    labs(x = "Year",
+         y = "Proportion Occupation Type",
+         colour = "Job Type",
+         title = "Seattle Area Occupation Distribution")
 sea_sector
 ```
 
