@@ -12,13 +12,13 @@ modeldata4<- read_csv("modeldata4.csv")
 
 
 #################################################################################
-#Models for everyone
-modeldata4$housav_log<-log(modeldata4$avg_house)
-modeldata4$mage_log<- log(modeldata4$median_age)
-modeldata4$housm_log<-log(modeldata4$med_house)
-modeldata4$tchb_exp<-log((modeldata4$tech_biz))^50
-modeldata4$biz_exp<-(modeldata4$business)^-200
-modeldata4$agi_log<-(log(modeldata4$agi))
+# #Models for everyone
+# modeldata4$housav_log<-log(modeldata4$avg_house)
+# modeldata4$mage_log<- log(modeldata4$median_age)
+# modeldata4$housm_log<-log(modeldata4$med_house)
+# modeldata4$tchb_exp<-log((modeldata4$tech_biz))^50
+# modeldata4$biz_exp<-(modeldata4$business)^-200
+# modeldata4$agi_log<-(log(modeldata4$agi))
 
 
 mod0<- lm(log(gini) ~mult
@@ -160,4 +160,90 @@ hmod6_sum<- summary(hmod6)
 #              depress, 
 #            data = modeldata4)
 # hmod8_sum<- summary(hmod7)
+
+#######################################################################################
+modeldata7<-modeldata4
+
+prediction<-predict(lm(log(gini) ~mult
+                    +log(avg_house)
+                    +log(med_house)
+                    +log(agi), 
+                    data = modeldata4))
+  
+modeldata7$gini_log_predicted<- prediction
+modeldata7$gini_log <- log(modeldata7$gini)
+
+
+plottingdata1 <-  data.table::melt(data = modeldata7,id.vars = c("year", "county"),
+                       measure.vars = c("gini_log","gini_log_predicted"))
+
+ggplot(plottingdata1, aes(x = year, y =value, color = variable ))+
+  geom_smooth(se = FALSE, span = .5)+
+  theme_classic()+
+  labs(y = "Natural Log of Gini Coefficient", 
+       x = "Year",
+       title = "Predicted vs. Actual \nNatural Log of Gini Coefficient 2008 to 2016",
+       color = "Actual vs. Predicted")+
+  scale_color_manual(values = c("dodgerblue3", "darkorange3"))
+#######################################################################################
+modeldata8<-modeldata4
+
+prediction<-(lm(med_house ~ log(gini)+
+                          median_age+
+                          wash+
+                          mult+
+                          med_housing_change+
+                          log(agi), 
+                        data = modeldata4))
+
+modeldata8$mhouse_predicted<- c(368384.6,367390.6, 376715.6, 377557.7, 389667.5,
+                                382490.7, NA, 379707.3, 409802.0, 417249.3, 408237.0,
+                                405636.7, NA, 373206.6, 371330.0, 379505.3, 378680.0,
+                                386855.9, 379311.9, 382523.6, 377041.7)
+
+modeldata8<-modeldata8%>%
+  unnest(mhouse_predicted)
+
+
+plottingdata2 <-  data.table::melt(data = modeldata8,id.vars = c("year", "county"),
+                                   measure.vars = c("med_house","mhouse_predicted"))
+
+ggplot(plottingdata2, aes(x = year, y =value, color = variable ))+
+  geom_smooth(se = FALSE, span =.4)+
+  theme_classic()+
+  labs(y = "Median House Value", x = "Year", 
+       title = "Predicted vs. Actual \nMedian House Value 2008 to 2016", 
+       color = "Actual vs. Predicted")+
+  scale_color_manual(values = c("dodgerblue3", "darkorange3"))
+
+
+#######################################################################################
+modeldata9<-modeldata4
+
+prediction<-predict(lm(med_housing_change ~
+                         log(blue_prop)+
+                         log(service)+
+                         mult+
+                         med_house+
+                         log(agi), 
+                       data = modeldata4))
+
+modeldata9$mhouse_chng_predicted<- c(prediction[1:6],NA, prediction[7:11],
+                                NA,prediction[12:19])  
+
+
+plottingdata3 <-  data.table::melt(data = modeldata9,id.vars = c("year", "county"),
+                                   measure.vars = c("med_housing_change","mhouse_chng_predicted"))
+
+ggplot(plottingdata3, aes(x = year, y =value, color = variable ))+
+  geom_smooth(se = FALSE, span =.4)+
+  theme_classic()+
+  labs(y = "Change in Median House Value Over the Last Year", 
+       x = "Year", 
+       title = "Predicted vs. Actual Change in \nMedian House Value 2008 to 2016", 
+       color = "Actual vs. Predicted")+
+  scale_color_manual(values = c("dodgerblue3", "darkorange3"))
+
+
+
 
