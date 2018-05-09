@@ -180,6 +180,7 @@ plottingdata1 <-  data.table::melt(data = modeldata7,id.vars = c("year", "county
 ggplot(plottingdata1, aes(x = year, y =value, color = variable ))+
   geom_smooth(se = FALSE, span = .5)+
   theme_classic()+
+  facet_wrap(~county)+
   labs(y = "Natural Log of Gini Coefficient", 
        x = "Year",
        title = "Predicted vs. Actual \nNatural Log of Gini Coefficient 2008 to 2016",
@@ -209,8 +210,9 @@ plottingdata2 <-  data.table::melt(data = modeldata8,id.vars = c("year", "county
                                    measure.vars = c("med_house","mhouse_predicted"))
 
 ggplot(plottingdata2, aes(x = year, y =value, color = variable ))+
-  geom_smooth(se = FALSE, span =.4)+
+  geom_smooth(se = FALSE, span =.7)+
   theme_classic()+
+  facet_wrap(~county)+
   labs(y = "Median House Value", x = "Year", 
        title = "Predicted vs. Actual \nMedian House Value 2008 to 2016", 
        color = "Actual vs. Predicted")+
@@ -235,14 +237,15 @@ modeldata9$mhouse_chng_predicted<- c(prediction[1:6],NA, prediction[7:11],
 plottingdata3 <-  data.table::melt(data = modeldata9,id.vars = c("year", "county"),
                                    measure.vars = c("med_housing_change","mhouse_chng_predicted"))
 
-ggplot(plottingdata3, aes(x = year, y =value, color = variable ))+
-  geom_smooth(se = FALSE, span =.4)+
+ggplot(plottingdata3, aes(x = year, y =value, color = variable))+
+  geom_smooth(se = FALSE, span =.7)+
   theme_classic()+
+  #facet_wrap(~county)
   labs(y = "Change in Median House Value Over the Last Year", 
        x = "Year", 
        title = "Predicted vs. Actual Change in \nMedian House Value 2008 to 2016", 
        color = "Actual vs. Predicted")+
-  scale_color_manual(values = c("dodgerblue3", "darkorange3"))
+  scale_color_manual(values = c("dodgerblue3", "darkorange3", "orchid"))
 
 
 
