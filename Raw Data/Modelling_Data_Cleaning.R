@@ -123,14 +123,15 @@ modeldata4<- left_join(modeldata4, modeldata5)
 modeldata4<- left_join(modeldata4, modeldata6)
 
 
-#write.csv(modeldata4, "modelling_data.csv")
+write.csv(modeldata4, "modelling_data.csv")
 modelling_data <- read_csv("modelling_data.csv")
 modelling_data1 <- left_join(modelling_data, inflow_county, by = c("county", "year"))
 write.csv(modelling_data1,"modelling_data1.csv" )
 
 modeldata4<- read_csv("modelling_data1.csv")
 modeldata4<- modeldata4%>%
-  filter(agi<=2900000)
+  filter(agi<=2900000)%>%
+  mutate()
 
 ##################################################################################
 #Spliting by county
@@ -161,7 +162,11 @@ hploter<- function(dat, exo){
     geom_point()+
     geom_smooth(se = FALSE, span = 1)
 }
-
+cploter<- function(dat, exo){
+  ggplot(dat, aes(x = exo, y = avg_housing_change))+
+    geom_point()+
+    geom_smooth(se = FALSE, span = 1)
+}
 
 
 ##### plots and notes on possible modelling
@@ -215,4 +220,34 @@ hploter(modeldata4, modeldata4$civil_servant)
 hploter(modeldata4, modeldata4$healthcare)
 hploter(modeldata4, log(abs(modeldata4$avg_housing_change)))
 hploter(modeldata4, modeldata4$med_housing_change)
+hploter(modeldata4, log(modeldata4$agi))
+hploter(modeldata4, log(modeldata4$n))
+
+
+cploter(modeldata4, modeldata4$median_age)
+#grouped by county, exponential
+# looks like a sin wave?
+
+cploter(modeldata4, log(modeldata4$gini))
+#looks linear by county
+cploter(modeldata4, modeldata4$med_house)
+#linear, grouped
+cploter(modeldata4, modeldata4$blue_prop)
+#linear-ish by county
+cploter(modeldata4, modeldata4$white_prop)
+#also no good, grouped by county though
+cploter(modeldata4, modeldata4$tech_biz)
+#negative linear (modeldata4, unexpected), grouped by county
+cploter(modeldata4, modeldata4$class_diff)
+#upwards linear
+cploter(modeldata4, modeldata4$service)
+cploter(modeldata4, modeldata4$tech)
+cploter(modeldata4, modeldata4$business)
+cploter(modeldata4, modeldata4$civil_servant)
+cploter(modeldata4, modeldata4$healthcare)
+cploter(modeldata4, abs(modeldata4$avg_housing_change))
+cploter(modeldata4, modeldata4$med_housing_change)
+cploter(modeldata4, modeldata4$agi)
+cploter(modeldata4, modeldata4$n)
+
 

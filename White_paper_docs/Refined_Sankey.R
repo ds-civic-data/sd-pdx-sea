@@ -5,7 +5,7 @@ library(riverplot)
 
 setwd("~/sd-pdx-sea/White_paper_docs")
 migration<-read_csv("migration.csv")
-outflow2_pdx<-read_csv("outflow2_pdx.csv")
+outflow2_pdx<-read_csv("outflow2s_pdx.csv")
 
 
 migration<- migration%>%
@@ -201,7 +201,7 @@ migriver<- makeRiver(nodes0,edges0
           ,node_styles = styles0)
 
 #riverplot(migriver, add_mid_points = FALSE
- #         ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
+  #      ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
 
 
 ###########################################################################################################

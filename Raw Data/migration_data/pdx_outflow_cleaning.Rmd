@@ -48,7 +48,7 @@ outflow <- left_join(outflow, outflow_0910_agg, by = c("origin_area" = "origin_a
 outflow <- left_join(outflow, outflow_0809_agg, by = c("origin_area" = "origin_area", "dest_area" = "dest_area"))
 
 names(outflow) <- c("origin_area", "dest_area", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008")
-outflow2_pdx <- gather(outflow_pdx, key = year, value = n, (`2015`:`2008`))
+outflow2_pdx <- gather(outflow, key = year, value = n, (`2015`:`2008`))
 ```
 ```{r}
 write.csv(outflow_1516_clean, "pdx_outflows_1516.csv")
@@ -66,15 +66,15 @@ write.csv(outflow2_pdx, "outflow2_pdx.csv")
 cleanr <- function(df) {
   colnames(df) <- c("y1_statefips", "y1_countyfips", "y2_statefips", "y2_countyfips", "y2_state", "y2_countyname", "n1", "n2", "agi")
   nu_df <- df %>%
-    filter((y1_statefips == "41"|y1_statefips=="53") & 
-             y1_countyfips %in% c("005","051","067","011"))%>%
+    filter((y1_statefips == "41"& y1_countyfips %in% c("005","051","067"))|(y1_statefips=="53" & y1_countyfips =="011"))%>%
     filter(!str_detect(y2_countyname, "Total|Non|Other|Foreign|Tot|Mig"))%>% 
     mutate(origin_area = "pdx") %>%
     mutate(dest_area = ifelse((y2_statefips == "06" & 
              y2_countyfips %in% c("001","013","041","055","069","075","081","085","087","095","097")), "bay_area",
              ifelse(y2_statefips == "53" & y2_countyfips %in% c("033","035","053","061","057","067","045","029"), "puget_sound_area",
-                    ifelse(y1_statefips == "41"|y1_statefips=="53" & 
-             y1_countyfips %in% c("005","051","067","011"),"pdx",
+                    ifelse((y2_statefips == "41"&
+                             y2_countyfips %in% c("005","051","067"))
+                            |(y2_statefips=="53" & y2_countyfips == "011"),"pdx",
              "other")))) %>%
     mutate(dest_area = ifelse(dest_area == "else", y2_state, dest_area))
 }
