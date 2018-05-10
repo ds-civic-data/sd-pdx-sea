@@ -8,6 +8,7 @@ library(tidyverse)
 library(riverplot)
 library(knitr)
 library(png)
+library(jpeg)
 ```
 
 # Abstract
