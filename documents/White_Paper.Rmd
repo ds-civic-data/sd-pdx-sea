@@ -158,3 +158,12 @@ Overall, while these models have harnessed interesting results they are, at thei
 
 ### Conclusion
 Through modelling and visualizations we have attempted to learn if there is a connection between the patterns of movement into Portland and changes in the price of single family residences over the last decade. While we are not able to make any causal claims, and lack the qualifications to offer a definite or substantive theoretical explanation; we hope that this paper shows that there is a signal within the noise, and that the questions raised here should not go unanswered.  
+
+\newpage
+### Appendix
+
+Job coding table for American Community Survey occupation data
+```{r 5.1, warning=FALSE,message=FALSE, echo=FALSE}
+job_codes <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\documents\\White_paper_docs\\job_codes.csv")
+select(job_codes, -X)
+```

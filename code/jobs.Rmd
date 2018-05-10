@@ -276,6 +276,14 @@ occupations_pdx_counties <- rbind(occ_16, occ_15, occ_14, occ_13, occ_12, occ_11
 occupations_pdx <- city_aggregate(occupations_pdx_counties)
 ```
 ```{r}
+job_list <- occupations_pdx %>%
+  ungroup() %>%
+  select(job, job_class) %>%
+  unique()
+names(job_list) <- c("Job", "Type")
+write.csv(job_list, "job_codes.csv")
+```
+```{r}
 write.csv(occupations_pdx, "pdx_occupations.csv")
 write.csv(occupations_pdx_counties, "pdx_counties_occupations.csv")
 write.csv(occupations_sf, "sf_occupations.csv")
