@@ -34,5 +34,23 @@ Data:
     -Bay Area and Puget Sound outflow
     -Portland inflow
     -Outflow from Portland
+    
+Visualizations:
+  1. Older Visualiztions Including: 
+    -Gini Coefficient by County
+    -Sankey Plot Total 2008 to 2016
+  2. Occupation and Class Visualizations for Bay Area, Portland Metro and Puget Sound Area
+  
+Resources:
+  1. American Community Survey Variable Name Key
+  2. Links to Other Resources
+
+Sandbox: Generally Scripts Not Used for Final Product
+  1. Old Scripts for Visualizations Based on ACS 5-year Survey
+  2. Migration Visualization Using ACS data - Migr_by_State_%Visuals.R
+  3. Unfinished Scripts
+  4. Old Sankey Visualization Script Using Plotly
+    -Sankey Diagram.Rmd
+    -Sankey_plot_0816.R
   
   
