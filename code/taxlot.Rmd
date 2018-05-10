@@ -19,11 +19,12 @@ map <- get_map(location="Burnside Bridge", zoom = 9, maptype="roadmap")
 ```{r, message=FALSE, warning=FALSE}
 #Load shapefiles
 zip_shape <- "C:\\Users\\Godot\\Downloads\\tl_2013_us_zcta510\\tl_2013_us_zcta510.shp"
+taxlot_data <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\Data\\taxlot_data.csv")
 zip_layer <- readOGR(zip_shape, layer = "tl_2013_us_zcta510")
-txlt <- "C:\\Users\\Godot\\Downloads\\taxlots\\taxlots.shp"
-taxlots <- readOGR(txlt, layer = "taxlots")
+#txlt <- "C:\\Users\\Godot\\Downloads\\taxlots\\taxlots.shp"
+#taxlots <- readOGR(txlt, layer = "taxlots")
 ```
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
 #set dates to filter between
 filter_dates <- as.Date(c("2006-01-01", "2018-01-01"))
 taxlot_data <- taxlots@data %>%
