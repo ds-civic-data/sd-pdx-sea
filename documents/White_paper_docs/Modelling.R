@@ -1,4 +1,4 @@
-setwd("~/sd-pdx-sea/White_paper_docs")
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
 modeldata4<- read_csv("modeldata4.csv")
 #################################
 #### Notes
