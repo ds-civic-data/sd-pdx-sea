@@ -23,7 +23,7 @@ This project is focused primarily on the storyline of the migration of people fr
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 source("Refined_Sankey.R")
 ```
-```{r 1.1, warning = FALSE, echo = FALSE}
+```{r 1.1, warning = FALSE, out.width = "10%", out.length = "10%", echo = FALSE}
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
 
@@ -34,9 +34,9 @@ dataplot1<- migration3%>%
   filter(origin=="bay_area"| origin=="puget_sound_area"|origin == "LA"|origin== "CA"| origin=="WA"|origin=="AZ")
 ```
 
-In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the number of people 
+In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the proportion of people leaving the Bay Area and Seattle and entering the Portland area has grown a lot in the last ten years.
 ```{r 1.4, message=FALSE, warning=FALSE, echo = FALSE}
- setwd("~/sd-pdx-sea/documents/White_paper_docs")
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
 knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png")
 ```
 As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
