@@ -61,7 +61,7 @@ sea_sector_county
 ```
 When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector. 
 
-Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
+Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. The y-axis for these visuals represents the proportion of people in white and blue collar jobs. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
 
 ```{r 2.2.1, warning=FALSE, message=FALSE, echo = FALSE}
 pdx_class
