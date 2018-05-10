@@ -82,9 +82,9 @@ sf_class_county
 sea_class_county
 ```
 
-One striking difference in the effect of 2008 in Clackamas county. In this areas where there area majority blue collar workers, both classes of workers decreases in 2008, rather than blue collar workers increasing in their proportion. Another notable phenomena may be the seemingly smaller effects on the Bay Area in general.
+One striking difference between counties during the recession is Clackamas county. Clackamas has a majority of blue collar workers, however, both classes of workers decreases in 2008, rather than the proportion of blue collar workers increasing, as in other counties. Another notable phenomena may be the seemingly smaller effects on the Bay Area in general.
 
-Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic ditribution. In this case they are a measurement of wage ditribution. The gini coefficient is a value between one and zero. For this coefficient zero represents a perfect distribution of wealth, everyone has the same income and one represents perfect inequality, where one person makes all income. The average gini coefficient to urban areas in the United States tends to be around .45.
+Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic distribution: in this case, wage distribution. The gini coefficient takes a value between zero and one, representing a perfect distribution of wealth or perfect inequality. For a value of zero everyone has the same income, whereas a one represents a situation in which one person makes all the income. The average gini coefficient to urban areas in the United States tends to be around .45.
 
 ```{r 2.3, echo = FALSE, Warning = FALSE}
 ACS_gini <- read_csv("~/sd-pdx-sea/Raw Data/ACS_gini.csv")
@@ -101,7 +101,8 @@ ggplot(ACS_gini, aes(x = year, y = gini, color = county))+
   scale_color_manual(values = c("dodgerblue2", "hotpink3", "darkorange3"))
 ```
 
-The graph above shows gini coefficiency over time where the thinner lines are the actual values and the thicker line show a general trend of the Gini coefficients. As we can see generally gini coefficients have been rising in the portland area over time. Aditionally, Multnomah tends to have a much larger coefficient accross time. 
+The graph above shows gini coefficients over time where the thinner lines are the actual values and the thicker line show a general trend of the Gini coefficients. Generally gini coefficients have been rising in the portland area over time. What is more, Multnomah County tends to have a much larger coefficient accross time.
+
 # Housing Prices
 Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that one of the effect that migration toPortland may have is a change in housing prices. So, for our project we incorporated Portland Metro area tax lot data. We looked at median housing prices over time. To see how this correlated with different neighborhood we created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for four key years, 2006, 2010, 2014 and 2017.
 ```{r 3.1}
