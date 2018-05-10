@@ -1,4 +1,4 @@
-WhitePaper
+Migration, Occupation, and Real Estate in Portland
 ================
 
     ## ── Attaching packages ───────────────────────────────────────────── tidyverse 1.2.1 ──
@@ -20,7 +20,12 @@ Portland, has been experiencing large amounts of population growth in the last d
 Migration Over Time
 ===================
 
-This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below.
+This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below. The height of each node in this plot represents the maximum of inflow and outflow. The width of each connection represents a number of people. The plot shows the following things across time: - Inflow to Portland from the Bay Area, Puget Sound Area, Los Angeles, Greater Washington (excluding Vancouver), Greater California (excluding the Bay Area and Los Angeles), and Arizona. - Outflow from the Portland Metro Area to the Bay Area and Puget Sound Area, but not to other areas.
+
+``` r
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
+knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
+```
 
 <img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png" width="120%" />
 
