@@ -83,7 +83,7 @@ One striking difference between counties during the recession is Clackamas count
 Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic distribution: in this case, wage distribution. The gini coefficient takes a value between zero and one, representing a perfect distribution of wealth or perfect inequality. For a value of zero everyone has the same income, whereas a one represents a situation in which one person makes all the income. The average gini coefficient to urban areas in the United States tends to be around .45.
 
 ```{r 2.3, echo = FALSE, Warning = FALSE, message=FALSE, echo = FALSE}
-ACS_gini <- read_csv("~/sd-pdx-sea/Raw Data/ACS_gini.csv")
+ACS_gini <- read_csv("~/sd-pdx-sea/Data/ACS_gini.csv")
 ```
 
 ```{r 2.3.2, warning = FALSE, message=FALSE, echo = FALSE}
@@ -164,6 +164,7 @@ Through modelling and visualizations we have attempted to learn if there is a co
 
 Job coding table for American Community Survey occupation data
 ```{r 5.1, warning=FALSE,message=FALSE, echo=FALSE}
-job_codes <- read.csv("C:\\Users\\Godot\\Documents\\sd-pdx-sea\\documents\\White_paper_docs\\job_codes.csv")
-select(job_codes, -X)
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
+job_codes <- job_codes <- read_csv("job_codes.csv")
+select(job_codes, -X1)
 ```

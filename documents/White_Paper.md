@@ -278,3 +278,22 @@ The goodness of fit of these models is less than others. However, all of their v
 ### Conclusion
 
 Through modelling and visualizations we have attempted to learn if there is a connection between the patterns of movement into Portland and changes in the price of single family residences over the last decade. While we are not able to make any causal claims, and lack the qualifications to offer a definite or substantive theoretical explanation; we hope that this paper shows that there is a signal within the noise, and that the questions raised here should not go unanswered.
+
+### Appendix
+
+Job coding table for American Community Survey occupation data
+
+    ## # A tibble: 90 x 2
+    ##    Job                                                         Type       
+    ##    <chr>                                                       <chr>      
+    ##  1 Agricultural workers                                        blue_collar
+    ##  2 Air transportation workers                                  blue_collar
+    ##  3 Architecture and engineering occupations:                   white_coll…
+    ##  4 Arts, design, entertainment, sports, and media occupations: white_coll…
+    ##  5 Assemblers and fabricators                                  blue_collar
+    ##  6 Baggage porters and concierges, and tour and travel guides  blue_collar
+    ##  7 Bookkeeping, accounting, and auditing clerks                blue_collar
+    ##  8 Bookkeeping, accounting, and auditing clerks                white_coll…
+    ##  9 Building cleaning and pest control workers                  blue_collar
+    ## 10 Bus drivers                                                 blue_collar
+    ## # ... with 80 more rows

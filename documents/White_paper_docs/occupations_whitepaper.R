@@ -3,12 +3,12 @@
 library(tidyverse)
 
 
-pdx_occupations <- read.csv("~/sd-pdx-sea/Raw Data/pdx_occupations.csv")
-pdx_counties_occupations <- read.csv("~/sd-pdx-sea/Raw Data/pdx_counties_occupations.csv")
-sf_occupations <- read.csv("~/sd-pdx-sea/Raw Data/sf_occupations.csv")
-sf_counties_occupations <- read.csv("~/sd-pdx-sea/Raw Data/sf_counties_occupations.csv")
-sea_occupations <- read.csv("~/sd-pdx-sea/Raw Data/sea_occupations.csv")
-sea_counties_occupations <- read.csv("~/sd-pdx-sea/Raw Data/sea_counties_occupations.csv")
+pdx_occupations <- read.csv("~/sd-pdx-sea/Data/pdx_occupations.csv")
+pdx_counties_occupations <- read.csv("~/sd-pdx-sea/Data/pdx_counties_occupations.csv")
+sf_occupations <- read.csv("~/sd-pdx-sea/Data/sf_occupations.csv")
+sf_counties_occupations <- read.csv("~/sd-pdx-sea/Data/sf_counties_occupations.csv")
+sea_occupations <- read.csv("~/sd-pdx-sea/Data/sea_occupations.csv")
+sea_counties_occupations <- read.csv("~/sd-pdx-sea/Data/sea_counties_occupations.csv")
 
 
 great_theme <- theme(axis.text.x = element_text(angle = 90))
