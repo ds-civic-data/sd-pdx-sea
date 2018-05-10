@@ -3,7 +3,7 @@ library(readr)
 library(tidyverse)
 library(riverplot)
 
-setwd("~/sd-pdx-sea/White_paper_docs")
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
 migration<-read_csv("migration.csv")
 outflow2_pdx<-read_csv("outflow2s_pdx.csv")
 

@@ -22,125 +22,34 @@ Migration Over Time
 
 This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below.
 
-``` r
- setwd("~/sd-pdx-sea/White_paper_docs")
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.png")
-```
+<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png" width="120%" />
 
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.png" width="120%" />
-
-``` r
-# ggplot(dataplot1, aes(x = year, y = n, color = origin))+
-#   geom_line()+
-#   theme_classic()+
-#   labs(title = "Migration into Portland Metro Area 2008 to 2016",x = "Year", y = "Number of People", color = "Origin")
- setwd("~/sd-pdx-sea/White_paper_docs")
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-5-1.png")
-```
-
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
+<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
 
 Economic Disparity
 ==================
 
 When looking at economic disparity we observed a few different components of resident life that play a factor. We first looked at the different industries of jobs in the Portland area, Bay Area and Puget Sound Area via visualizations. Next, we observed a simplified visualization of classes of occupations based on categorizing jobs into either "White Collar" jobs or "Blue Collar" jobs.
 
-``` r
-pdx_sector
-```
-
-![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-1.png)
-
-``` r
-sf_sector
-```
-
-![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-2.png)
-
-``` r
-sea_sector
-```
-
-![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-3.png)
+![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-1.png)![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-2.png)![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-3.png)
 
 The plots above, which show Portland, Bay Area, and Puget Sound sector distributions, could potentially hint at who is working what kind of jobs in each of these areas. This visualization shows slight growth in tech accross all areas, with Portland experiencing the least growth. We also see serious decreases in the business sector and increases in the service sector around 2010, potentially as a result of the 2008 economic crash. There is also a steady decrease in proportion of civil servants in all three geographic areas between 2008 and 2010.
 
 Many people dicuss the growth of the tech industry in places like the Bay Area and Portland. Often this growth is blamed for rising living costs such as rent or housing prices. While this may be true, according to American Community Survey data the growth seems not to have been too explosive in the greater Portland Metro area, Bay Area and Puget Sound. However, this may not be the case if we observe individual counties of these areas instead. One might suspect that while San Francisco proper has had a tech boom perhaps its neighboring counties have not. Or, pehaps they have additionally seen tech growth as a result of spillover.
 
-``` r
-pdx_sector_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.1.2-1.png)
-
-``` r
-sf_sector_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.1.2-2.png)
-
-``` r
-sea_sector_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
+![](White_Paper_files/figure-markdown_github/2.1.2-1.png)![](White_Paper_files/figure-markdown_github/2.1.2-2.png)![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
 
 Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
 
-``` r
-pdx_class
-```
+![](White_Paper_files/figure-markdown_github/2.2.1-1.png)![](White_Paper_files/figure-markdown_github/2.2.1-2.png)![](White_Paper_files/figure-markdown_github/2.2.1-3.png)
 
-![](White_Paper_files/figure-markdown_github/2.2.1-1.png)
-
-``` r
-sf_class
-```
-
-![](White_Paper_files/figure-markdown_github/2.2.1-2.png)
-
-``` r
-sea_class
-```
-
-![](White_Paper_files/figure-markdown_github/2.2.1-3.png)
-
-These visuals illuminate the importance of the 2008 recession, as all three areas seem to have experienced overall decreases in proportion of people working white collar jobs and increases in proportion of people working blue collar jobs. By examining this phenomenon at a more finely tuned geographic level we can more closely observe differences in these trends.
-
-``` r
-pdx_class_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.2.2-1.png)
-
-``` r
-sf_class_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.2.2-2.png)
-
-``` r
-sea_class_county
-```
-
-![](White_Paper_files/figure-markdown_github/2.2.2-3.png)
+These visuals illuminate the importance of the 2008 recession, as all three areas seem to have experienced overall decreases in proportion of people working white collar jobs and increases in proportion of people working blue collar jobs. By examining this phenomenon at a more finely tuned geographic level we can more closely observe differences in these trends. ![](White_Paper_files/figure-markdown_github/2.2.2-1.png)![](White_Paper_files/figure-markdown_github/2.2.2-2.png)![](White_Paper_files/figure-markdown_github/2.2.2-3.png)
 
 One striking difference between counties during the recession is Clackamas county. Clackamas has a majority of blue collar workers, however, both classes of workers decreases in 2008, rather than the proportion of blue collar workers increasing, as in other counties. Another notable phenomena may be the seemingly smaller effects on the Bay Area in general.
 
 Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic distribution: in this case, wage distribution. The gini coefficient takes a value between zero and one, representing a perfect distribution of wealth or perfect inequality. For a value of zero everyone has the same income, whereas a one represents a situation in which one person makes all the income. The average gini coefficient to urban areas in the United States tends to be around .45.
 
     ## Warning: Missing column names filled in: 'X1' [1]
-
-``` r
-ggplot(ACS_gini, aes(x = year, y = gini, color = county))+
-  geom_line(alpha = .5)+
-  geom_smooth(se = FALSE, span = 1) +
-  labs(x = "Year",
-       y = "Gini Coefficient",
-       colour = "County",
-       title = "Portland Gini Coefficient by County 2008 to 2016")+
-  scale_color_manual(values = c("dodgerblue2", "hotpink3", "darkorange3"))
-```
 
 ![](White_Paper_files/figure-markdown_github/2.3.2-1.png)
 
@@ -149,33 +58,7 @@ The graph above shows gini coefficients over time where the thinner lines are th
 Housing Prices
 ==============
 
-Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that migration to Portland may have is an effect on change in housing prices. For our project we incorporated Portland Metro taxlot data. We examined median housing prices for single family residences in each zip code over time, and created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for only 2006, 2010, 2014 and 2017 so as to effectively display a trend without the reader getting bogged down in the details of an overly long time series. These maps show that by 2017 Portland single family residences are more expensive across the board, moreover, the prices are relatively geographically homogeneous throughout Portland. This wasn't always the case however. By moving back through this time series we can see that some areas, specifically those in the center of Portland, have been fairly expensive over the entirety of the last decade. What has changed is the median price of the rest of Portland, which has increased to match that of the most expensive areas.
-
-``` r
- setwd("~/sd-pdx-sea/White_paper_docs")
-
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-2.png")
-```
-
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-2.png" width="672" />
-
-``` r
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-3.png")
-```
-
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-3.png" width="672" />
-
-``` r
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-4.png")
-```
-
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-4.png" width="672" />
-
-``` r
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-5.png")
-```
-
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-8-5.png" width="672" />
+Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that migration to Portland may have is an effect on change in housing prices. For our project we incorporated Portland Metro taxlot data. We examined median housing prices for single family residences in each zip code over time, and created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for only 2006, 2010, 2014 and 2017 so as to effectively display a trend without the reader getting bogged down in the details of an overly long time series. These maps show that by 2017 Portland single family residences are more expensive across the board, moreover, the prices are relatively geographically homogeneous throughout Portland. This wasn't always the case however. By moving back through this time series we can see that some areas, specifically those in the center of Portland, have been fairly expensive over the entirety of the last decade. What has changed is the median price of the rest of Portland, which has increased to match that of the most expensive areas. <img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-8-2.png" width="672" /><img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-8-3.png" width="672" /><img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-8-4.png" width="672" /><img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-8-5.png" width="672" />
 
 Modelling the relationships
 ===========================
@@ -183,10 +66,6 @@ Modelling the relationships
 Finally in an attempt to connect the three components discussed above, we built models of two different dependent variables. First, we modeled the gini coefficienct of the different neighborhoods of Portland, then median and average housing price.
 
 When modelling the gini coefficient we are attempting to see if there is a correlation between migration or distribution of jobs with the gini coefficient. Our best model uses the natural log of the gini coefficient as a function of the natural log of average and median house prices (for single family residences) and the natural log of the inflow of adjusted gross income through migration. Additionally, we correct for the differences in counties with the "mult" variable which is a dummy variable for whether or not the county is Multnomah county. Next, we used the same model but substituted the number of people migrating to each area in a year rather than the adjusted gross income value. These two values "n" and "agi" tend to play a similar role in the models. So, using both threatens issues of multicolinearity, therfore, we ran two models, one with each of these variables. Their results are as shown below.
-
-``` r
-mod0_sum
-```
 
     ## 
     ## Call:
@@ -210,10 +89,6 @@ mod0_sum
     ## Residual standard error: 0.02069 on 16 degrees of freedom
     ## Multiple R-squared:  0.8921, Adjusted R-squared:  0.8651 
     ## F-statistic: 33.06 on 4 and 16 DF,  p-value: 1.499e-07
-
-``` r
-mod1_sum
-```
 
     ## 
     ## Call:
@@ -242,10 +117,6 @@ As we can see from above our models achieve relatively good fits and our analysi
 
 Next we modelled median and average housing prices as a function of both agi and n. The models have median and average housing costs as the dependent variables and the natural log of the gini coefficient, housing price changes, and agi or n as the independent variables. We also included median age and multnomah as independent variables to correct for their effects. First let's observe the models for median house prices.
 
-``` r
-hmod0_sum
-```
-
     ## 
     ## Call:
     ## lm(formula = med_house ~ log(gini) + median_age + wash + mult + 
@@ -271,10 +142,6 @@ hmod0_sum
     ##   (2 observations deleted due to missingness)
     ## Multiple R-squared:  0.9473, Adjusted R-squared:  0.921 
     ## F-statistic: 35.96 on 6 and 12 DF,  p-value: 5.464e-07
-
-``` r
-hmod1_sum
-```
 
     ## 
     ## Call:
@@ -304,10 +171,6 @@ hmod1_sum
 
 Next, for average prices:
 
-``` r
-hmod3_sum
-```
-
     ## 
     ## Call:
     ## lm(formula = avg_house ~ wash + mult + avg_housing_change + log(agi), 
@@ -331,10 +194,6 @@ hmod3_sum
     ##   (3 observations deleted due to missingness)
     ## Multiple R-squared:  0.929,  Adjusted R-squared:  0.9072 
     ## F-statistic: 42.55 on 4 and 13 DF,  p-value: 2.394e-07
-
-``` r
-hmod4_sum
-```
 
     ## 
     ## Call:
@@ -364,10 +223,6 @@ When modelling for median and average we found that correcting for counties was 
 
 Finally, we attempted to model median housing price changes from year to year (ex: 2009 to 2010) as a function of some of the variables we have discussed. Our models were certainly less accurate when running these models but may still be worthwhile to our understanding of housing price changes in the Portland area. We modelled median housing price change as a function of the natural log of the portion of blue collar workers, the natural log of the proportion of service industry workers and the natural log of either agi or n. We also corrected for median house price and county.
 
-``` r
-hmod5_sum
-```
-
     ## 
     ## Call:
     ## lm(formula = med_housing_change ~ log(blue_prop) + log(service) + 
@@ -392,10 +247,6 @@ hmod5_sum
     ##   (2 observations deleted due to missingness)
     ## Multiple R-squared:  0.8206, Adjusted R-squared:  0.7516 
     ## F-statistic: 11.89 on 5 and 13 DF,  p-value: 0.0001779
-
-``` r
-hmod6_sum
-```
 
     ## 
     ## Call:
