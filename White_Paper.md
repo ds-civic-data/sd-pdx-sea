@@ -15,49 +15,20 @@ WhitePaper
 Abstract
 ========
 
-Portland, as countless articles will tell you, has been experiencing large amounts of population growth in the last decade. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Additionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. It seems that there is a high likelihood that these three components are related. Which we will attempt to show.
+Portland, has been experiencing large amounts of population growth in the last decade. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Additionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. It seems that there is a high likelihood that these three components are related. These issues, both seperately and connectedly, tie into the idea of gentrification. Our hope is that this project can be continued into a more in depth study of how Portland is being gentrified.
 
 Migration Over Time
 ===================
 
 This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below.
 
-    ## Parsed with column specification:
-    ## cols(
-    ##   X1 = col_integer(),
-    ##   origin = col_character(),
-    ##   destinations = col_character(),
-    ##   tax_year = col_character(),
-    ##   n = col_integer(),
-    ##   year = col_integer(),
-    ##   total = col_integer(),
-    ##   prop = col_double()
-    ## )
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   X1 = col_integer(),
-    ##   origin_area = col_character(),
-    ##   dest_area = col_character(),
-    ##   year = col_integer(),
-    ##   n = col_integer()
-    ## )
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   X1 = col_integer(),
-    ##   origin = col_character(),
-    ##   destinations = col_character(),
-    ##   year = col_integer(),
-    ##   n = col_integer()
-    ## )
-
 ``` r
  setwd("~/sd-pdx-sea/White_paper_docs")
-knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.pdf")
+knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.png")
 ```
 
-<embed src="/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.pdf" width="100%" type="application/pdf" />
+<img src="/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFinal.png" width="120%" />
+
 ``` r
 # ggplot(dataplot1, aes(x = year, y = n, color = origin))+
 #   geom_line()+
@@ -78,23 +49,17 @@ When looking at economic disparity we observed a few different components of res
 pdx_sector
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-1.png)
 
 ``` r
 sf_sector
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-2.png)
 
 ``` r
 sea_sector
 ```
-
-    ## `geom_smooth()` using method = 'loess'
 
 ![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-3.png)
 
@@ -106,23 +71,17 @@ Many people dicuss the growth of the tech industry in places like the Bay Area a
 pdx_sector_county
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.1.2-1.png)
 
 ``` r
 sf_sector_county
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.1.2-2.png)
 
 ``` r
 sea_sector_county
 ```
-
-    ## `geom_smooth()` using method = 'loess'
 
 ![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
 
@@ -132,23 +91,17 @@ Next, we will look at trends of classes of residents rather than occupations. Th
 pdx_class
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.2.1-1.png)
 
 ``` r
 sf_class
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.2.1-2.png)
 
 ``` r
 sea_class
 ```
-
-    ## `geom_smooth()` using method = 'loess'
 
 ![](White_Paper_files/figure-markdown_github/2.2.1-3.png)
 
@@ -158,23 +111,17 @@ These visuals illuminate the importance of the 2008 recession, as all three area
 pdx_class_county
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.2.2-1.png)
 
 ``` r
 sf_class_county
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.2.2-2.png)
 
 ``` r
 sea_class_county
 ```
-
-    ## `geom_smooth()` using method = 'loess'
 
 ![](White_Paper_files/figure-markdown_github/2.2.2-3.png)
 
@@ -183,17 +130,6 @@ One striking difference between counties during the recession is Clackamas count
 Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic distribution: in this case, wage distribution. The gini coefficient takes a value between zero and one, representing a perfect distribution of wealth or perfect inequality. For a value of zero everyone has the same income, whereas a one represents a situation in which one person makes all the income. The average gini coefficient to urban areas in the United States tends to be around .45.
 
     ## Warning: Missing column names filled in: 'X1' [1]
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   X1 = col_integer(),
-    ##   id = col_character(),
-    ##   id2 = col_integer(),
-    ##   county = col_character(),
-    ##   gini = col_double(),
-    ##   margin_error = col_double(),
-    ##   year = col_integer()
-    ## )
 
 ``` r
 ggplot(ACS_gini, aes(x = year, y = gini, color = county))+
@@ -206,8 +142,6 @@ ggplot(ACS_gini, aes(x = year, y = gini, color = county))+
   scale_color_manual(values = c("dodgerblue2", "hotpink3", "darkorange3"))
 ```
 
-    ## `geom_smooth()` using method = 'loess'
-
 ![](White_Paper_files/figure-markdown_github/2.3.2-1.png)
 
 The graph above shows gini coefficients over time where the thinner lines are the actual values and the thicker line show a general trend of the Gini coefficients. Generally gini coefficients have been rising in the portland area over time. What is more, Multnomah County tends to have a much larger coefficient accross time.
@@ -215,7 +149,7 @@ The graph above shows gini coefficients over time where the thinner lines are th
 Housing Prices
 ==============
 
-Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that one of the effect that migration toPortland may have is a change in housing prices. So, for our project we incorporated Portland Metro area tax lot data. We looked at median housing prices over time. To see how this correlated with different neighborhood we created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for four key years, 2006, 2010, 2014 and 2017.
+Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that migration to Portland may have is an effect on change in housing prices. For our project we incorporated Portland Metro taxlot data. We examined median housing prices for single family residences in each zip code over time, and created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for only 2006, 2010, 2014 and 2017 so as to effectively display a trend without the reader getting bogged down in the details of an overly long time series. These maps show that by 2017 Portland single family residences are more expensive across the board, moreover, the prices are relatively geographically homogeneous throughout Portland. This wasn't always the case however. By moving back through this time series we can see that some areas, specifically those in the center of Portland, have been fairly expensive over the entirety of the last decade. What has changed is the median price of the rest of Portland, which has increased to match that of the most expensive areas.
 
 ``` r
  setwd("~/sd-pdx-sea/White_paper_docs")
@@ -246,37 +180,9 @@ knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-
 Modelling the relationships
 ===========================
 
-Finally to attempt to connect the three components we have discussed, we will try modelling two different dependent variables. First, we will model gini coefficienct of the different neighborhoods of Portland and then housing prices, both median and average.
+Finally in an attempt to connect the three components discussed above, we built models of two different dependent variables. First, we modeled the gini coefficienct of the different neighborhoods of Portland, then median and average housing price.
 
-When modelling the genie coefficient we are attempting to see if there is a correlation between migration or ditribution of jobs with the genie coefficient. Our best model modelled the natural log of the gini coefficient as a function of the natural log of average and median house prices (for simgle family homes) and the natural log of the inflow of adjusted gross income through migration. Aditionally, we correct for the differences in counties with the "mult" variable which is a dummy vairable for whether or the county is Multnomah county. Next, we then used the same model but substituted the number of people migrating to each area in a year rather than the adjusted gross income value. These two values "n" and "agi" tend to play a similar role in the models. So, using both threatens issues of multicolinearity thus, we run two models, one with each. Their results are as shown below.
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   .default = col_double(),
-    ##   X1 = col_integer(),
-    ##   X1.x = col_integer(),
-    ##   X1.x.x = col_integer(),
-    ##   id.x = col_character(),
-    ##   id2.x = col_integer(),
-    ##   county = col_character(),
-    ##   year = col_integer(),
-    ##   med_house = col_integer(),
-    ##   X1.y = col_integer(),
-    ##   id.y = col_character(),
-    ##   id2.y = col_integer(),
-    ##   total_pop = col_integer(),
-    ##   mult = col_integer(),
-    ##   wash = col_integer(),
-    ##   clack = col_integer(),
-    ##   med_housing_change = col_integer(),
-    ##   X1.y.y = col_integer(),
-    ##   y2_countyfips = col_integer(),
-    ##   n = col_integer(),
-    ##   agi = col_integer()
-    ##   # ... with 1 more columns
-    ## )
-
-    ## See spec(...) for full column specifications.
+When modelling the gini coefficient we are attempting to see if there is a correlation between migration or distribution of jobs with the gini coefficient. Our best model uses the natural log of the gini coefficient as a function of the natural log of average and median house prices (for single family residences) and the natural log of the inflow of adjusted gross income through migration. Additionally, we correct for the differences in counties with the "mult" variable which is a dummy variable for whether or not the county is Multnomah county. Next, we used the same model but substituted the number of people migrating to each area in a year rather than the adjusted gross income value. These two values "n" and "agi" tend to play a similar role in the models. So, using both threatens issues of multicolinearity, therfore, we ran two models, one with each of these variables. Their results are as shown below.
 
 ``` r
 mod0_sum
@@ -332,9 +238,9 @@ mod1_sum
     ## Multiple R-squared:  0.8881, Adjusted R-squared:  0.8601 
     ## F-statistic: 31.74 on 4 and 16 DF,  p-value: 1.994e-07
 
-As we can see from above our models do get relatively good fits and our analysis supports the idea that in the portland area the most significant factors that correlate to the gini coefficient are the natural log of agi and number of people migrating and the multnomah vairables. That said, average and median house also seem to be significant at a 95% level. We additionally see that the models that include woth agi of migration and number of people migrating have similar R squared values and coefficients. They both seem to have a small but negative relationship with the gini coefficient.
+As we can see from above our models achieve relatively good fits and our analysis supports the idea that in the Portland area the most significant factors that correlate to the gini coefficient are the natural log of agi, the number of people migrating, and the multnomah vairables. That said, average and median house price are also significant at a 95% level. In addition the models that include both agi of migration and number of people migrating have similar R squared values and coefficients. They both have a small but negative relationship with the gini coefficient.
 
-Next we modelled median and average housing prices as a function of both agi and n. The models have median and average housing costs as the dependent variables and the natural log of the gini coefficient, housing price changes, and agi or n as the independent variables. We also included independent variables median age and multnomah to correct for their effects. First let's observe the models for median house prices.
+Next we modelled median and average housing prices as a function of both agi and n. The models have median and average housing costs as the dependent variables and the natural log of the gini coefficient, housing price changes, and agi or n as the independent variables. We also included median age and multnomah as independent variables to correct for their effects. First let's observe the models for median house prices.
 
 ``` r
 hmod0_sum
@@ -454,9 +360,9 @@ hmod4_sum
     ## Multiple R-squared:  0.9271, Adjusted R-squared:  0.9047 
     ## F-statistic: 41.35 on 4 and 13 DF,  p-value: 2.842e-07
 
-When modelling for median and average we found that correcting for counties completely was very important. Aditionally, for all of our models interpretations of migration, both agi and n seemed to have a negative correlation with house values. Theoretically this may be because people maybe tend to move to cheaper places. In dicussions of San Francisco in particular people often talk about how impossible to afford housing it is in the city. Perhaps these areas are seeing migration from people who simply cant afford to live in their old homes. Alternatively, we may think that people do not like people migrating in, thus demand for housing in areas with more migration drops and so do housing prices. These values are also significant at the 99.9 percent level when we model them with respect for median house value which tends to be a better measurement than average.
+When modelling for median and average we found that correcting for counties was very important. All of our models interpretations of migration, both agi and n, have a negative correlation with single family residence price. From a theoretical perspective this might be caused by peoples tendencies to move to more affordable places. In dicussions of San Francisco in particular, is incredibly expensive. Perhaps these areas are experiencing outflow migration by people who simply cannot afford to live in their homes. Alternatively, it might be that people do not like others to migrate in. Thus demand for housing in areas with more migration drops and so do housing prices. These values are also significant at the 99.9 percent level when we model them with respect for median housing price, which tends to be a better measurement than average.
 
-Finally, we attempted to model median housing price changes from year to year (ex: 2009 to 2010) as a function of some of the variables we have discussed. Our models were certainly less accurate when running these models but still may be worthwhile to our understanding of housing price changes in the Portland area. We modelled median housing price change as a function of the natural log of the portion of blue collar workers, the natural log of the proportion of service industry workers and the natural log of either agi or n. We also corrected for median house cost and county.
+Finally, we attempted to model median housing price changes from year to year (ex: 2009 to 2010) as a function of some of the variables we have discussed. Our models were certainly less accurate when running these models but may still be worthwhile to our understanding of housing price changes in the Portland area. We modelled median housing price change as a function of the natural log of the portion of blue collar workers, the natural log of the proportion of service industry workers and the natural log of either agi or n. We also corrected for median house price and county.
 
 ``` r
 hmod5_sum
@@ -516,8 +422,8 @@ hmod6_sum
     ## Multiple R-squared:  0.8309, Adjusted R-squared:  0.7659 
     ## F-statistic: 12.78 on 5 and 13 DF,  p-value: 0.0001229
 
-As we can see the goodness of fit of these models is less than our others. However, all of their variables are found to be significant. We see that both the proportion of blue collar workers and service indutry workers are significant at the 99% level. Additionally, we see that while agi and n had a negative relationship with housing prices, they have a positive relationship with change in housing price. Their effects are certainly significant within this model. This positive relationship could mean that more migration leads to increased demand for housing which drives up housing prices. The negative relationship between median house values can be explained by the fact that people want to buy houses that are priced lower. However, then their demand in these areas could be causing positive change in housing prices as shown by the positive relationship of migration and median housing changes. Overall, while these models have harnest interesting results they are at their core faulty given their level of aggregation and sample size. A more robust modelling would include a larger sample size. This could be found by using a finer level of aggregation, like at the neighborhood level, or perhaps by using a larger span of time.
+The goodness of fit of these models is less than others. However, all of their variables are found to be significant: both the proportion of blue collar workers and service indutry workers are significant at the 99% level. Additionally, we see that while agi and n had a negative relationship with housing prices, they have a positive relationship with change in housing price. Their effects are certainly significant within this model. This positive relationship could mean that more migration leads to increased demand for housing which drives up housing prices. The negative relationship between median house price could possibly be explained by the fact that people want to buy houses that are priced lower. As a result the increase in demand for housing in these areas could be causing positive change in housing prices as shown by the positive relationship between migration and median housing changes. Overall, while these models have harnessed interesting results they are, at their core, faulty given their level of aggregation and sample size. A more robust modelling would include a larger sample size which could be achieved by using a finer level of aggregation, like at the neighborhood level, or perhaps by using a larger span of time.
 
 ### Conclusion
 
-In conclusion, through modelling and visualizations we have attempted to see if there is a connection between the patterns of movement into Portland and
+Through modelling and visualizations we have attempted to learn if there is a connection between the patterns of movement into Portland and changes in the price of single family residences over the last decade. While we are not able to make any causal claims, and lack the qualifications to offer a definite or substantive theoretical explanation; we hope that this paper shows that there is a signal within the noise, and that the questions raised here should not go unanswered.

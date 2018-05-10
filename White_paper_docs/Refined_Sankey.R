@@ -128,7 +128,7 @@ node_labels0<- c(AZ_1  = "AZ 2008",
                  pdx_8 = "Portland 2015",
                  puget_sound_area_8 = "Seattle 2015",
                  WA_8 = "WA 2015",
-                 bay_area_1 ="Bay Area 20016",
+                 bay_area_1 ="Bay Area 2016",
                  pdx_1 = "Portland 2016",
                  puget_sound_area_1 = "Seattle 2016")
 
