@@ -4,7 +4,7 @@ Migration, Occupation, and Real Estate in Portland
 Abstract
 ========
 
-Portland, has been experiencing large amounts of population growth in the last decade. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Additionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. It seems that there is a high likelihood that these three components are related. These issues, both seperately and connectedly, tie into the idea of gentrification. Our hope is that this project can be continued into a more in depth study of how Portland is being gentrified.
+Portland, has been experiencing large amounts of population growth in the last decade. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Additionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. We use modelling to attempt to tie together these three concepts. That said, it is key to keep in mind the level of aggregation when dicussing the models. While the models fit for the Portland Metro area, on an individual, county, or neighborhood basis the same results may not apply. These issues, both seperately and connectedly, tie into the idea of gentrification. Our hope is that this project can be continued into a more in depth study of how Portland is being gentrified.
 
 Migration Over Time
 ===================
@@ -32,7 +32,7 @@ Many people dicuss the growth of the tech industry in places like the Bay Area a
 
 ![](White_Paper_files/figure-markdown_github/2.1.2-1.png)![](White_Paper_files/figure-markdown_github/2.1.2-2.png)![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
 
-Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
+Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. The y-axis for these visuals represents the proportion of people in white and blue collar jobs. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
 
 ![](White_Paper_files/figure-markdown_github/2.2.1-1.png)![](White_Paper_files/figure-markdown_github/2.2.1-2.png)![](White_Paper_files/figure-markdown_github/2.2.1-3.png)
 
@@ -53,12 +53,14 @@ Housing Prices
 
 Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that migration to Portland may have is an effect on change in housing prices. For our project we incorporated Portland Metro taxlot data. We examined median housing prices for single family residences in each zip code over time, and created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for only 2006, 2010, 2014 and 2017 so as to effectively display a trend without the reader getting bogged down in the details of an overly long time series. These maps show that by 2017 Portland single family residences are more expensive across the board, moreover, the prices are relatively geographically homogeneous throughout Portland. This wasn't always the case however. By moving back through this time series we can see that some areas, specifically those in the center of Portland, have been fairly expensive over the entirety of the last decade. What has changed is the median price of the rest of Portland, which has increased to match that of the most expensive areas.
 
-![Map 1](White_paper_docs/unnamed-chunk-8-2.png) ![Map 2](White_paper_docs/unnamed-chunk-8-3.png) ![Map 3](White_paper_docs/unnamed-chunk-8-4.png) ![Map 4](White_paper_docs/unnamed-chunk-8-5.png)
+![Map 1](White_paper_docs/unnamed-chunk-8-1.png) ![Map 2](White_paper_docs/unnamed-chunk-8-2.png) ![Map 3](White_paper_docs/unnamed-chunk-8-3.png) ![Map 4](White_paper_docs/unnamed-chunk-8-4.png)
 
 Modelling the relationships
 ===========================
 
 Finally in an attempt to connect the three components discussed above, we built models of two different dependent variables. First, we modeled the gini coefficienct of the different neighborhoods of Portland, then median and average housing price.
+
+For the following models we checked for heteroskedasticity using residuals plots and found them all to be homoskedastic. Aditionally, we checked our models using quantile-quantile plots and found them all to be normal. However, there are caveats to our results. Because the areas we discuss are near one another there is some amount of geographic dependence between the data points. As a result, our standard errors are slightly too narrow and p-values that are slightly too small.
 
 When modelling the gini coefficient we are attempting to see if there is a correlation between migration or distribution of jobs with the gini coefficient. Our best model uses the natural log of the gini coefficient as a function of the natural log of average and median house prices (for single family residences) and the natural log of the inflow of adjusted gross income through migration. Additionally, we correct for the differences in counties with the "mult" variable which is a dummy variable for whether or not the county is Multnomah county. Next, we used the same model but substituted the number of people migrating to each area in a year rather than the adjusted gross income value. These two values "n" and "agi" tend to play a similar role in the models. So, using both threatens issues of multicolinearity, therfore, we ran two models, one with each of these variables. Their results are as shown below.
 
@@ -164,57 +166,7 @@ Next we modelled median and average housing prices as a function of both agi and
     ## Multiple R-squared:  0.9441, Adjusted R-squared:  0.9162 
     ## F-statistic:  33.8 on 6 and 12 DF,  p-value: 7.711e-07
 
-Next, for average prices:
-
-    ## 
-    ## Call:
-    ## lm(formula = avg_house ~ wash + mult + avg_housing_change + log(agi), 
-    ##     data = modeldata4)
-    ## 
-    ## Residuals:
-    ##    Min     1Q Median     3Q    Max 
-    ## -11370  -4165   1462   4344  12434 
-    ## 
-    ## Coefficients:
-    ##                      Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)         5.118e+05  2.755e+04  18.574 9.64e-11 ***
-    ## wash               -2.679e+04  4.193e+03  -6.390 2.38e-05 ***
-    ## mult                2.754e+04  4.948e+03   5.566 9.14e-05 ***
-    ## avg_housing_change  7.505e-01  2.856e-01   2.627   0.0209 *  
-    ## log(agi)           -5.332e+03  2.077e+03  -2.568   0.0234 *  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 7635 on 13 degrees of freedom
-    ##   (3 observations deleted due to missingness)
-    ## Multiple R-squared:  0.929,  Adjusted R-squared:  0.9072 
-    ## F-statistic: 42.55 on 4 and 13 DF,  p-value: 2.394e-07
-
-    ## 
-    ## Call:
-    ## lm(formula = avg_house ~ wash + mult + avg_housing_change + log(n), 
-    ##     data = modeldata4)
-    ## 
-    ## Residuals:
-    ##    Min     1Q Median     3Q    Max 
-    ## -11972  -4176   1763   4454  12782 
-    ## 
-    ## Coefficients:
-    ##                      Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept)         4.805e+05  1.615e+04  29.763 2.41e-13 ***
-    ## wash               -2.654e+04  4.268e+03  -6.218 3.13e-05 ***
-    ## mult                2.791e+04  5.013e+03   5.567 9.12e-05 ***
-    ## avg_housing_change  7.430e-01  2.893e-01   2.568   0.0234 *  
-    ## log(n)             -4.305e+03  1.746e+03  -2.465   0.0284 *  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 7738 on 13 degrees of freedom
-    ##   (3 observations deleted due to missingness)
-    ## Multiple R-squared:  0.9271, Adjusted R-squared:  0.9047 
-    ## F-statistic: 41.35 on 4 and 13 DF,  p-value: 2.842e-07
-
-When modelling for median and average we found that correcting for counties was very important. All of our models interpretations of migration, both agi and n, have a negative correlation with single family residence price. From a theoretical perspective this might be caused by peoples tendencies to move to more affordable places. In dicussions of San Francisco in particular, is incredibly expensive. Perhaps these areas are experiencing outflow migration by people who simply cannot afford to live in their homes. Alternatively, it might be that people do not like others to migrate in. Thus demand for housing in areas with more migration drops and so do housing prices. These values are also significant at the 99.9 percent level when we model them with respect for median housing price, which tends to be a better measurement than average.
+When modelling for median we found that correcting for counties was very important. All of our models interpretations of migration, both agi and n, have a negative correlation with single family residence price. From a theoretical perspective this might be caused by peoples tendencies to move to more affordable places. In dicussions of San Francisco in particular, is incredibly expensive. Perhaps these areas are experiencing outflow migration by people who simply cannot afford to live in their homes. Alternatively, it might be that people do not like others to migrate in. Thus demand for housing in areas with more migration drops and so do housing prices. These values are also significant at the 99.9 percent level when we model them with respect for median housing price.
 
 Finally, we attempted to model median housing price changes from year to year (ex: 2009 to 2010) as a function of some of the variables we have discussed. Our models were certainly less accurate when running these models but may still be worthwhile to our understanding of housing price changes in the Portland area. We modelled median housing price change as a function of the natural log of the portion of blue collar workers, the natural log of the proportion of service industry workers and the natural log of either agi or n. We also corrected for median house price and county.
 
