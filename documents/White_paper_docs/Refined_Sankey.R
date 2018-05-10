@@ -71,60 +71,60 @@ Value <-migration_river$n
 ID<- migration_river$ID
 edges0<- data.frame(N1, N2, Value, ID, stringsAsFactors = FALSE)
 
-#Styles (NEED TO BE FIXED)
+#Styles
 node_labels0<- c(AZ_1  = "AZ 2008",
                  bay_area_1 ="Bay Area 2008", 
                  CA_1 = "CA 2008",
-                 LA_1 = "Las Angeles 2008",
+                 LA_1 = "Los Angeles 2008",
                  pdx_1 = "Portland 2008",
                  puget_sound_area_1 = "Seattle 2008",
                  WA_1 = "WA 2008",
                  AZ_2  = "AZ 2009",
                  bay_area_2 ="Bay Area 2009", 
                  CA_2 = "CA 2009",
-                 LA_2 = "Las Angeles 2009",
+                 LA_2 = "Los Angeles 2009",
                  pdx_2 = "Portland 2009",
                  puget_sound_area_2 = "Seattle 2009",
                  WA_2 = "WA 2009",
                  AZ_3  = "AZ 2010",
                  bay_area_3 ="Bay Area 2010", 
                  CA_3 = "CA 2010",
-                 LA_3 = "Las Angeles 2010",
+                 LA_3 = "Los Angeles 2010",
                  pdx_3 = "Portland 2010",
                  puget_sound_area_3 = "Seattle 2010",
                  WA_3 = "WA 2010",
                  AZ_4  = "AZ 2011",
                  bay_area_4 ="Bay Area 2011", 
                  CA_4 = "CA 2011",
-                 LA_4 = "Las Angeles 2011",
+                 LA_4 = "Los Angeles 2011",
                  pdx_4 = "Portland 2011",
                  puget_sound_area_4 = "Seattle 2011",
                  WA_4 = "WA 2011",
                  AZ_5  = "AZ 2012",
                  bay_area_5 ="Bay Area 2012", 
                  CA_5 = "CA 2012",
-                 LA_5 = "Las Angeles 2012",
+                 LA_5 = "Los Angeles 2012",
                  pdx_5 = "Portland 2012",
                  puget_sound_area_5 = "Seattle 2012",
                  WA_5 = "WA 2012",
                  AZ_6  = "AZ 2013",
                  bay_area_6 ="Bay Area 2013", 
                  CA_6 = "CA 2013",
-                 LA_6 = "Las Angeles 2013",
+                 LA_6 = "Los Angeles 2013",
                  pdx_6 = "Portland 2013",
                  puget_sound_area_6 = "Seattle 2013",
                  WA_6 = "WA 2013",
                  AZ_7  = "AZ 2014",
                  bay_area_7 ="Bay Area 2014", 
                  CA_7 = "CA 2014",
-                 LA_7 = "Las Angeles 2014",
+                 LA_7 = "Los Angeles 2014",
                  pdx_7 = "Portland 2014",
                  puget_sound_area_7 = "Seattle 2014",
                  WA_7 = "WA 2014",
                  AZ_8  = "AZ 2015",
                  bay_area_8 ="Bay Area 2015", 
                  CA_8 = "CA 2015",
-                 LA_8 = "Las Angeles 2015",
+                 LA_8 = "Los Angeles 2015",
                  pdx_8 = "Portland 2015",
                  puget_sound_area_8 = "Seattle 2015",
                  WA_8 = "WA 2015",
@@ -200,8 +200,8 @@ migriver<- makeRiver(nodes0,edges0
           ,node_labels = node_labels0
           ,node_styles = styles0)
 
-#riverplot(migriver, add_mid_points = FALSE
-  #      ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
+riverplot(migriver, add_mid_points = FALSE
+        ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
 
 
 ###########################################################################################################
