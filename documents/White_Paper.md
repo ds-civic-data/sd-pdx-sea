@@ -1,17 +1,6 @@
 Migration, Occupation, and Real Estate in Portland
 ================
 
-    ## ── Attaching packages ───────────────────────────────────────────── tidyverse 1.2.1 ──
-
-    ## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
-    ## ✔ tidyr   0.8.0     ✔ stringr 1.2.0
-    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
-
-    ## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
 Abstract
 ========
 
@@ -22,14 +11,9 @@ Migration Over Time
 
 This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below. The height of each node in this plot represents the maximum of inflow and outflow. The width of each connection represents a number of people. The plot shows the following things across time: - Inflow to Portland from the Bay Area, Puget Sound Area, Los Angeles, Greater Washington (excluding Vancouver), Greater California (excluding the Bay Area and Los Angeles), and Arizona. - Outflow from the Portland Metro Area to the Bay Area and Puget Sound Area, but not to other areas.
 
-``` r
-setwd("~/sd-pdx-sea/documents/White_paper_docs")
-knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
-```
+<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png" width="2000" />
 
-<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png" width="120%" />
-
-<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
+In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the number of people <img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
 
 Economic Disparity
 ==================

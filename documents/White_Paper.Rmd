@@ -3,7 +3,7 @@ title: "Migration, Occupation, and Real Estate in Portland"
 output: github_document
 ---
 
-```{r 0, echo = FALSE, warning = FALSE}
+```{r 0, echo = FALSE, warning = FALSE, message=FALSE}
 library(tidyverse)
 library(riverplot)
 library(knitr)
@@ -23,7 +23,7 @@ This project is focused primarily on the storyline of the migration of people fr
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 source("Refined_Sankey.R")
 ```
-```{r 1.1, warning = FALSE, out.width="120%"}
+```{r 1.1, warning = FALSE, echo = FALSE}
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
 
@@ -34,6 +34,7 @@ dataplot1<- migration3%>%
   filter(origin=="bay_area"| origin=="puget_sound_area"|origin == "LA"|origin== "CA"| origin=="WA"|origin=="AZ")
 ```
 
+In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the number of people 
 ```{r 1.4, message=FALSE, warning=FALSE, echo = FALSE}
  setwd("~/sd-pdx-sea/documents/White_paper_docs")
 knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png")
