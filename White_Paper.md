@@ -15,12 +15,12 @@ WhitePaper
 Abstract
 ========
 
-Portland, as countless articles will tell you, has been in the past decade experiencing large amounts of population growth. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Aditionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. It seems that there is a high likelihood that these three components are related. We will attempt to show how they may be related.
+Portland, as countless articles will tell you, has been experiencing large amounts of population growth in the last decade. Migration to and from portland is bound to have economic and cultural effects on the city and its residents. Additionally, it is worth wondering where people are migrating from and what their characteristics are. Our paper is essentially broken down into three components that relate to residential change in Portland. First, we describe migration, with a focus on migration from the Bay Area and Puget Sound/Seattle Area. Second we dicuss economic disparity in the Portland area, and what factors may play a role in that disparity. Third, we dicuss housing prices and changes in housing prices over the last decade in Portland. It seems that there is a high likelihood that these three components are related. Which we will attempt to show.
 
 Migration Over Time
 ===================
 
-This project has focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland com from these areas as well as the states of California and Washington. Our data tells us about county to county migration. We can observe the largest contributors over time by viewing the Sankey plot shown below.
+This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below.
 
     ## Parsed with column specification:
     ## cols(
@@ -67,7 +67,7 @@ knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/SankeyFinalFin
 knitr::include_graphics("/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-5-1.png")
 ```
 
-<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above migration to Portland from these top areas seems to have been increasing in the last ten years. Aditionally, the Bay Area and Puget sound areas are large contributors to migrations. Aditionally, our findings support the idea that many people are also moving from the Las Angeles Area to the Portland area.
+<img src="/Users/user1/sd-pdx-sea/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
 
 Economic Disparity
 ==================
@@ -98,9 +98,9 @@ sea_sector
 
 ![](White_Paper_files/figure-markdown_github/2.1%20s/b%20plots-3.png)
 
-The plots above, which show Portland, Bay Area and Puget Sound sector distribution, could potentially hint at who is working as what in each of these areas. This visualization shows slight growth in tech accross all areas, but with the least in portland. We also see serious decreases in the business sector and increases in the service sector around 2010, potentially as a result of the 2008 economic crash. Also, there is a steady decrease in all three areas of government workers between 2008 and 2010.
+The plots above, which show Portland, Bay Area, and Puget Sound sector distributions, could potentially hint at who is working what kind of jobs in each of these areas. This visualization shows slight growth in tech accross all areas, with Portland experiencing the least growth. We also see serious decreases in the business sector and increases in the service sector around 2010, potentially as a result of the 2008 economic crash. There is also a steady decrease in proportion of civil servants in all three geographic areas between 2008 and 2010.
 
-Many people dicuss the growth of tech in areas like the Bay Area and Portland. Often this growth is blamed for rising living costs such as rent or housing prices. While this may be true, for the greater Portland Metro area, Bay Area and Puget Sound, according to this ACS data it doesnt look like the growth has been too explosive. However, this may be different if we observe the individual counties of these areas instead. One might suspect that whiel San Francisco proper has had a tech boom perhaps its neighboring counties have not. Or, pehaps they have additionally seen tech growth as a result of spillover.
+Many people dicuss the growth of the tech industry in places like the Bay Area and Portland. Often this growth is blamed for rising living costs such as rent or housing prices. While this may be true, according to American Community Survey data the growth seems not to have been too explosive in the greater Portland Metro area, Bay Area and Puget Sound. However, this may not be the case if we observe individual counties of these areas instead. One might suspect that while San Francisco proper has had a tech boom perhaps its neighboring counties have not. Or, pehaps they have additionally seen tech growth as a result of spillover.
 
 ``` r
 pdx_sector_county
@@ -124,7 +124,7 @@ sea_sector_county
 
     ## `geom_smooth()` using method = 'loess'
 
-![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into areas it is easier to see that potentially changes in different sectors vary across county. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
+![](White_Paper_files/figure-markdown_github/2.1.2-3.png) When we break this occupation data down into counties it is easy to see that changes in different sectors vary across counties. For instance in Portland, we can see that by comparison to Clackamas, Multnomah and Washington counties have both seen relatively large growth in the tech sector.
 
 Next, we will look at trends of classes of residents rather than occupations. This means sorting people into "White Collar" and "Blue Collar" groups. In theory this helps to see larger trends of what types of groups of workers are working in each of these larger areas, and their respective counties.
 
@@ -152,7 +152,7 @@ sea_class
 
 ![](White_Paper_files/figure-markdown_github/2.2.1-3.png)
 
-These visual elluminate the importance of the 2008 depression, as we see that in all three areas overall there seem to have been decreases in proportion of people working in white collar jobs and increases in proportion of people working in blue collar jobs. Now to further our understanding, here are these classes by county and area.
+These visuals illuminate the importance of the 2008 recession, as all three areas seem to have experienced overall decreases in proportion of people working white collar jobs and increases in proportion of people working blue collar jobs. By examining this phenomenon at a more finely tuned geographic level we can more closely observe differences in these trends.
 
 ``` r
 pdx_class_county
@@ -178,9 +178,9 @@ sea_class_county
 
 ![](White_Paper_files/figure-markdown_github/2.2.2-3.png)
 
-One striking difference in the effect of 2008 in Clackamas county. In this areas where there area majority blue collar workers, both classes of workers decreases in 2008, rather than blue collar workers increasing in their proportion. Another notable phenomena may be the seemingly smaller effects on the Bay Area in general.
+One striking difference between counties during the recession is Clackamas county. Clackamas has a majority of blue collar workers, however, both classes of workers decreases in 2008, rather than the proportion of blue collar workers increasing, as in other counties. Another notable phenomena may be the seemingly smaller effects on the Bay Area in general.
 
-Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic ditribution. In this case they are a measurement of wage ditribution. The gini coefficient is a value between one and zero. For this coefficient zero represents a perfect distribution of wealth, everyone has the same income and one represents perfect inequality, where one person makes all income. The average gini coefficient to urban areas in the United States tends to be around .45.
+Next, to dicuss a more macroeconomic component of economic disparity we will look at gini coefficients in the portland area over time. Gini coefficients are a measurement of economic distribution: in this case, wage distribution. The gini coefficient takes a value between zero and one, representing a perfect distribution of wealth or perfect inequality. For a value of zero everyone has the same income, whereas a one represents a situation in which one person makes all the income. The average gini coefficient to urban areas in the United States tends to be around .45.
 
     ## Warning: Missing column names filled in: 'X1' [1]
 
@@ -210,7 +210,12 @@ ggplot(ACS_gini, aes(x = year, y = gini, color = county))+
 
 ![](White_Paper_files/figure-markdown_github/2.3.2-1.png)
 
-The graph above shows gini coefficiency over time where the thinner lines are the actual values and the thicker line show a general trend of the Gini coefficients. As we can see generally gini coefficients have been rising in the portland area over time. Aditionally, Multnomah tends to have a much larger coefficient accross time. \# Housing Prices Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that one of the effect that migration toPortland may have is a change in housing prices. So, for our project we incorporated Portland Metro area tax lot data. We looked at median housing prices over time. To see how this correlated with different neighborhood we created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for four key years, 2006, 2010, 2014 and 2017.
+The graph above shows gini coefficients over time where the thinner lines are the actual values and the thicker line show a general trend of the Gini coefficients. Generally gini coefficients have been rising in the portland area over time. What is more, Multnomah County tends to have a much larger coefficient accross time.
+
+Housing Prices
+==============
+
+Housing Prices in Portland seem like they may be key to the story of migration. It seems reasonable to expect that one of the effect that migration toPortland may have is a change in housing prices. So, for our project we incorporated Portland Metro area tax lot data. We looked at median housing prices over time. To see how this correlated with different neighborhood we created a series of maps which show median housing price mapped onto the Portland Metro area. We did these for four key years, 2006, 2010, 2014 and 2017.
 
 ``` r
  setwd("~/sd-pdx-sea/White_paper_docs")
