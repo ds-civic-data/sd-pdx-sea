@@ -200,8 +200,8 @@ migriver<- makeRiver(nodes0,edges0
           ,node_labels = node_labels0
           ,node_styles = styles0)
 
-riverplot(migriver, add_mid_points = FALSE
-        ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
+#riverplot(migriver, add_mid_points = FALSE
+ #       ,default_style = styles0, srt = 0, xscale = 1, nodewidth = 1.2)
 
 
 ###########################################################################################################

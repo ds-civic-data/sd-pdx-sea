@@ -19,15 +19,13 @@ Portland, has been experiencing large amounts of population growth in the last d
 This project is focused primarily on the storyline of the migration of people from the Bay Area and Seattle to Portland. We have found, using IRS data, that the largest sources of migration across time to Portland come from these areas as well as the states of California and Washington. This data tells us about county to county migration. The largest contributors over timecan be observed in the Sankey plot below. The height of each node in this plot represents the maximum of inflow and outflow. The width of each connection represents a number of people. The plot shows the following things across time: 
 - Inflow to Portland from the Bay Area, Puget Sound Area, Los Angeles, Greater Washington (excluding Vancouver), Greater California (excluding the Bay Area and Los Angeles), and Arizona.
 - Outflow from the Portland Metro Area to the Bay Area and Puget Sound Area, but not to other areas.
-```{r 1.0, echo=FALSE, warning = FALSE, message=FALSE, echo = FALSE, fig.width = 20, fig.height=10}
+```{r 1.0, echo=FALSE, warning = FALSE, message=FALSE, fig.width = 20, fig.height=10}
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 source("Refined_Sankey.R")
 ```
 ```{r 1.1, warning = FALSE, out.width = "100%", echo = FALSE}
-# library(Pandoc)
-# setwd("~/sd-pdx-sea/documents/White_paper_docs")
-# knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
-# ![something]("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
+setwd("~/sd-pdx-sea/documents/White_paper_docs")
+knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png")
 
 ```
 ```{r 1.3, echo = FALSE, warning = FALSE}
