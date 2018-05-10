@@ -278,17 +278,377 @@ Through modelling and visualizations we have attempted to learn if there is a co
 
 Job coding table for American Community Survey occupation data
 
-    ## # A tibble: 90 x 2
-    ##    Job                                                         Type       
-    ##    <chr>                                                       <chr>      
-    ##  1 Agricultural workers                                        blue_collar
-    ##  2 Air transportation workers                                  blue_collar
-    ##  3 Architecture and engineering occupations:                   white_coll…
-    ##  4 Arts, design, entertainment, sports, and media occupations: white_coll…
-    ##  5 Assemblers and fabricators                                  blue_collar
-    ##  6 Baggage porters and concierges, and tour and travel guides  blue_collar
-    ##  7 Bookkeeping, accounting, and auditing clerks                blue_collar
-    ##  8 Bookkeeping, accounting, and auditing clerks                white_coll…
-    ##  9 Building cleaning and pest control workers                  blue_collar
-    ## 10 Bus drivers                                                 blue_collar
-    ## # ... with 80 more rows
+<table>
+<colgroup>
+<col width="90%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Job</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Agricultural workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Air transportation workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Architecture and engineering occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Arts, design, entertainment, sports, and media occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Assemblers and fabricators</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Baggage porters and concierges, and tour and travel guides</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Bookkeeping, accounting, and auditing clerks</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Bookkeeping, accounting, and auditing clerks</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Building cleaning and pest control workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Bus drivers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Business and financial operations occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Carpenters</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Cashiers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Child care workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Communications equipment operators</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Community and social service occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Community and social services occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Computer and mathematical occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Construction laborers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Construction trades workers except carpenters, electricians, painters, plumbers, and construction laborers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Cooks and food preparation workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Customer service representatives</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Driver/sales workers and truck drivers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Education, training, and library occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Electrical equipment mechanics and other installation, maintenance, and repair occupations including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Electricians</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Extraction workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Financial clerks except bookkeeping, accounting, and auditing clerks</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Financial clerks except bookkeeping, accounting, and auditing clerks</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Fire fighting and prevention workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Fire fighting and prevention workers including supervisors</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Fishing and hunting, and forest, conservation, and logging workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Food and beverage serving workers except waiters/waitresses</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Food processing workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Grounds maintenance workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Health diagnosing and treating practitioners and other technical occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Health technologists and technicians</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Healthcare practitioner and technical occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Information and record clerks except customer service representatives</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Information and record clerks except customer service representatives</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Laborers and material movers, hand</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Law enforcement workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Law enforcement workers including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Legal occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Life, physical, and social science occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Management occupations:</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Material moving workers except supervisors and laborers and material movers, hand</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Material moving workers:</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Material recording, scheduling, dispatching, and distributing workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Material recording, scheduling, dispatching, and distributing workers</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Metal workers and plastic workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Motor vehicle operators except bus and truck drivers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Nursing, psychiatric, and home health aides</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Occupational and physical therapist assistants and aides</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other construction workers and helpers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other food preparation and serving related workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other food preparation and serving workers including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other healthcare support occupations</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other installation, maintenance, and repair occupations including electrical and electronic equipment mechanics, installers, and repairers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other office and administrative support workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other office and administrative support workers including supervisors</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other personal care and service workers except personal appearance, baggage porters, concierges, and child care workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other production occupations</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other production occupations including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other protective service workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other protective service workers including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other sales and related workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Other sales and related workers including supervisors</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Other transportation workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Painters and paperhangers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Personal appearance workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Pipelayers, plumbers, pipefitters, and steamfitters</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Plant and system operators</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Printing workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Rail and water transportation workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Retail sales workers except cashiers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Sales representatives, services</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Sales representatives, services, wholesale and manufacturing</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Sales representatives, wholesale and manufacturing</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Secretaries and administrative assistants</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Secretaries and administrative assistants</td>
+<td align="left">white_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Supervisors and other personal care and service workers except personal appearance, transportation, and child care workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Supervisors of transportation and material moving workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Supervisors, construction and extraction workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Supervisors, transportation and material moving workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Textile, apparel, and furnishings workers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Transportation, tourism, and lodging attendants</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Vehicle and mobile equipment mechanics, installers, and repairers</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="odd">
+<td align="left">Waiters and waitresses</td>
+<td align="left">blue_collar</td>
+</tr>
+<tr class="even">
+<td align="left">Woodworkers</td>
+<td align="left">blue_collar</td>
+</tr>
+</tbody>
+</table>

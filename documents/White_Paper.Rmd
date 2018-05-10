@@ -9,7 +9,6 @@ library(riverplot)
 library(knitr)
 library(png)
 library(readr)
-install.packages("kableExtra")
 library(kableExtra)
 ```
 
