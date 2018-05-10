@@ -8,7 +8,9 @@ library(tidyverse)
 library(riverplot)
 library(knitr)
 library(png)
-library(jpeg)
+library(readr)
+install.packages("kableExtra")
+library(kableExtra)
 ```
 
 # Abstract
@@ -158,8 +160,8 @@ Through modelling and visualizations we have attempted to learn if there is a co
 Job coding table for American Community Survey occupation data
 ```{r 5.1, warning=FALSE,message=FALSE, echo=FALSE}
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
-library(readr)
-library(tidyverse)
-job_codes <- read_csv("job_codes.csv")
-select(job_codes, -X1)
+jobs <- read_csv("job_codes.csv")
+job_codes <- jobs %>%
+  select(-X1) 
+kable(job_codes, format="markdown")
 ```
