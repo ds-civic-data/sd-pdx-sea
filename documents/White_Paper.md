@@ -13,7 +13,9 @@ This project is focused primarily on the storyline of the migration of people fr
 
 <img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/SankeyFinalFinal.png" width="100%" />
 
-In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the proportion of people leaving the Bay Area and Seattle and entering the Portland area has grown a lot in the last ten years. <img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
+In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the proportion of people leaving the Bay Area and Seattle and entering the Portland area has grown a lot in the last ten years.
+
+<img src="/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png" width="672" /> As we can see from the two plots above, migration to Portland from these most influential areas has been increasing over the last decade: with the Bay Area and the Puget Sound Area being among the largest contributors. Additionally, our findings support the idea that many people are also moving from the Los Angeles Area to the Portland area.
 
 Economic Disparity
 ==================

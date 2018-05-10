@@ -7,6 +7,7 @@ output: github_document
 library(tidyverse)
 library(riverplot)
 library(knitr)
+library(png)
 ```
 
 # Abstract
@@ -35,6 +36,7 @@ dataplot1<- migration3%>%
 ```
 
 In addition we can look at the following graph of outflow from these key areas into and out of the Portland Metro Areas. As we can see the proportion of people leaving the Bay Area and Seattle and entering the Portland area has grown a lot in the last ten years.
+
 ```{r 1.4, message=FALSE, warning=FALSE, echo = FALSE}
 setwd("~/sd-pdx-sea/documents/White_paper_docs")
 knitr::include_graphics("/Users/user1/sd-pdx-sea/documents/White_paper_docs/unnamed-chunk-5-1.png")
